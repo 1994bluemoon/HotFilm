@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content">
+<android.support.v7.widget.CardView
+    android:id="@+id/cv_movie"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_margin="5dp"
@@ -12,7 +15,8 @@
             android:id="@+id/im_backdrop"
             android:layout_width="match_parent"
             android:scaleType="centerCrop"
-            android:layout_height="360px" />
+            android:layout_height="360dp"
+            android:contentDescription="TODO" />
         <TextView
             android:singleLine="true"
             android:ellipsize="end"
