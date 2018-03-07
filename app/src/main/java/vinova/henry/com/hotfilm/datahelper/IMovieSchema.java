@@ -1,9 +1,6 @@
 package vinova.henry.com.hotfilm.datahelper;
 
-import android.content.ContentValues;
 import android.net.Uri;
-
-import vinova.henry.com.hotfilm.models.Movie;
 
 public interface IMovieSchema {
 

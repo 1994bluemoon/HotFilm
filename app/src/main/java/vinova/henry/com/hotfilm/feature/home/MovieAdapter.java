@@ -1,11 +1,9 @@
 package vinova.henry.com.hotfilm.feature.home;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.LoaderManager;
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,7 +16,6 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,14 +31,12 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private final int VIEW_TYPE_LOADING = 1;
     private IOnLoadMoreListener onLoadMoreListener;
     private boolean isLoading;
-    private Activity activity;
     private Context mContext;
     private List<Movie> movies;
     private int visibleThreshold = 5;
     private int lastVisibleItem, totalItemCount;
 
-    MovieAdapter(RecyclerView recyclerView, Context mContext, Activity activity) {
-        this.activity = activity;
+    MovieAdapter(RecyclerView recyclerView, Context mContext) {
         this.mContext = mContext;
         movies = new ArrayList<>();
 
@@ -67,8 +62,9 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         return movies.get(position) == null ? VIEW_TYPE_LOADING : VIEW_TYPE_ITEM;
     }
 
+    @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == VIEW_TYPE_ITEM){
             View v = LayoutInflater.from(mContext).inflate(R.layout.item_movie_cardview, parent, false);
             return new ItemViewHolder(v);
@@ -79,7 +75,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
 
         if (holder instanceof ItemViewHolder){
             ItemViewHolder viewHolder = (ItemViewHolder) holder;
@@ -93,7 +89,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, DetailActivity.class);
-                    intent.putExtra("Movie", (Serializable) movies.get(position));
+                    intent.putExtra("Movie", movies.get(position));
                     mContext.startActivity(intent);
                 }
             });
@@ -138,7 +134,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         @BindView(R.id.progressBar1)
         ProgressBar progressBar;
-        public LoadingViewHolder(View itemView) {
+        LoadingViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }

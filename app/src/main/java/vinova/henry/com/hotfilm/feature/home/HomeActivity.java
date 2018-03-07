@@ -42,7 +42,7 @@ public class HomeActivity extends AppCompatActivity implements IHomeContract.IVi
 
         rvFilm.setLayoutManager(new GridLayoutManager(this, 3, LinearLayoutManager.VERTICAL, false));
         rvFilm.setHasFixedSize(true);
-        adapter = new MovieAdapter(rvFilm,this, this);
+        adapter = new MovieAdapter(rvFilm,this);
         rvFilm.setAdapter(adapter);
 
         adapter.setOnLoadMoreListener(new IOnLoadMoreListener() {
@@ -102,6 +102,6 @@ public class HomeActivity extends AppCompatActivity implements IHomeContract.IVi
 
     @Override
     public void showLoadDataOfflineSuccess() {
-
+        //TODO
     }
 }

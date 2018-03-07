@@ -90,7 +90,7 @@ public class DbContentProvider extends ContentProvider implements IMovieSchema {
 
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
-        int updCount = 0;
+        int updCount;
         switch (uriMatcher.match(uri)) {
             case MOVIE:
                 updCount =  sqLiteDatabase.update(IMovieSchema.TABLE_NAME,values,selection,selectionArgs);

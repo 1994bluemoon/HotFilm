@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 import java.sql.SQLException;
-import java.util.List;
 
 import vinova.henry.com.hotfilm.models.Movie;
 
