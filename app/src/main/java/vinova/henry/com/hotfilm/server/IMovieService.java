@@ -4,6 +4,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import vinova.henry.com.hotfilm.models.MvResult;
+import vinova.henry.com.hotfilm.models.TrailerResult;
 
 public interface IMovieService {
     @GET("discover/movie?")

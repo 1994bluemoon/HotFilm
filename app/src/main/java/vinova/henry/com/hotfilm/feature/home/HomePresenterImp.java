@@ -23,13 +23,11 @@ public class HomePresenterImp implements IHomeContract.IPresenter, IMovieSchema{
     private IHomeContract.IView iView;
     private Context mContext;
     private List<Movie> movies;
-    //private DatabaseMovie databaseMovie;
 
     HomePresenterImp(Context context, IHomeContract.IView iView) {
         this.iView = iView;
         this.mContext = context;
         movies = new ArrayList<>();
-        //databaseMovie = new DatabaseMovie(mContext);
     }
 
     List<Movie> getMovies() {
@@ -39,7 +37,7 @@ public class HomePresenterImp implements IHomeContract.IPresenter, IMovieSchema{
     @Override
     public void getUserFromServer(int page) {
         IMovieService service = ApiUtils.getSOService();
-        Call<MvResult> call = service.getServerData("54715436e1813692f121feb9fd97709e", "en-US", "popularity.desc", page);
+        Call<MvResult> call = service.getServerData(ApiUtils.getApiKey(), "en-US", "popularity.desc", page);
         call.enqueue(new Callback<MvResult>() {
             @Override
             public void onResponse(@NonNull Call<MvResult> call, @NonNull Response<MvResult> response) {
