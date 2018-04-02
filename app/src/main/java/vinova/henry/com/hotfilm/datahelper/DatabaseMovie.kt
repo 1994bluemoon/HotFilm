@@ -1,8 +1,6 @@
-package vinova.henry.com.hotfilm.datahelper;
+/*package vinova.henry.com.hotfilm.datahelper
 
-public class DatabaseMovie {
-
-    /*private DbOpenHelper mDbHelper;
+class DatabaseMovieprivate DbOpenHelper mDbHelper;
     private final Context mContext;
     private MovieDaoImp daoImp;
 
@@ -22,4 +20,3 @@ public class DatabaseMovie {
     public void close(){
         mDbHelper.close();
     }*/
-}
