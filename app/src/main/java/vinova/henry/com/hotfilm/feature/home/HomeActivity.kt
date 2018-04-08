@@ -16,7 +16,6 @@ import butterknife.ButterKnife
 import vinova.henry.com.hotfilm.R
 import vinova.henry.com.hotfilm.datahelper.IMovieSchema
 import vinova.henry.com.hotfilm.models.Movie
-import java.util.concurrent.Delayed
 
 class HomeActivity : AppCompatActivity(), IHomeContract.IView, IMovieSchema {
 
@@ -46,12 +45,12 @@ class HomeActivity : AppCompatActivity(), IHomeContract.IView, IMovieSchema {
 
 
         adapter.setOnLoadMoreListener(onLoadMoreListener){
-            movies!!.add(Movie())
-            adapter.notifyItemInserted(movies!!.size - 1)
+            movies.add(Movie())
+            adapter.notifyItemInserted(movies.size - 1)
 
             Handler().postDelayed({
-                movies!!.removeAt(movies!!.size - 1)
-                adapter.notifyItemRemoved(movies!!.size)
+                movies.removeAt(movies.size - 1)
+                adapter.notifyItemRemoved(movies.size)
                 mPage += 1
                 homePresenterImp.getUserFromServer(mPage)
                 Log.d("page ", mPage.toString())
@@ -61,13 +60,13 @@ class HomeActivity : AppCompatActivity(), IHomeContract.IView, IMovieSchema {
 
     @Throws(SQLException::class)
     override fun showSuccess() {
-        movies!!.addAll(homePresenterImp.movies!!)
+        movies.addAll(homePresenterImp.movies!!)
         contentResolver.delete(IMovieSchema.CONTENT_URI, null, null)
         for (m in homePresenterImp.movies!!) {
             contentResolver.insert(IMovieSchema.CONTENT_URI, homePresenterImp.getContentValue(m))
             Log.d("save child offline", "item")
         }
-        adapter.setMovies(movies!!)
+        adapter.setMovies(movies)
         adapter.notifyDataSetChanged()
         adapter.setLoaded()
         Log.d("getMovie from server", "OK")
@@ -82,12 +81,12 @@ class HomeActivity : AppCompatActivity(), IHomeContract.IView, IMovieSchema {
         if (cursor != null) {
             cursor.moveToFirst()
             while (!cursor.isAfterLast) {
-                movies!!.add(homePresenterImp.portMovie(cursor))
+                movies.add(homePresenterImp.portMovie(cursor))
                 cursor.moveToNext()
             }
             cursor.close()
         }
-        if (movies != null) adapter.setMovies(movies as ArrayList<Movie>)
+        adapter.setMovies(movies as ArrayList<Movie>)
         adapter.notifyDataSetChanged()
         Log.d("getMovie frome server", "Failed")
         Log.d("get offline data", "OK")
