@@ -26,7 +26,7 @@ import vinova.henry.com.hotfilm.models.TrailerResult
 import vinova.henry.com.hotfilm.server.ApiUtils
 import java.util.*
 
-class DetailActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, IDetailContract.IDetailView {
+class DetailActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     internal var movie: Movie? = null
     internal var isClicked = false

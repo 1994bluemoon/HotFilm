@@ -7,8 +7,8 @@
     tools:context="vinova.henry.com.hotfilm.feature.home.HomeActivity">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_film"
+        android:id="@+id/rvFilm"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content" />
 
 </android.support.constraint.ConstraintLayout>
