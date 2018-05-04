@@ -1,3 +1,4 @@
+/*
 package vinova.henry.com.hotfilm.feature.detail
 
 import android.content.Intent
@@ -20,7 +21,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import vinova.henry.com.hotfilm.R
 import vinova.henry.com.hotfilm.feature.trailer.YouTubeActivity
-import vinova.henry.com.hotfilm.models.Movie
+import vinova.henry.com.hotfilm.models.MovieBase
 import vinova.henry.com.hotfilm.models.Trailer
 import vinova.henry.com.hotfilm.models.TrailerResult
 import vinova.henry.com.hotfilm.server.ApiUtils
@@ -28,7 +29,7 @@ import java.util.*
 
 class DetailActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
-    internal var movie: Movie? = null
+    internal var movie: MovieBase? = null
     internal var isClicked = false
     internal lateinit var trailers: MutableList<Trailer>
     internal lateinit var detailPresenterImp: DetailPresenterImp
@@ -43,8 +44,10 @@ class DetailActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     internal var tvTitle: TextView? = null
     @BindView(R.id.tv_detail)
     internal var tvDetail: TextView? = null
-    /*@BindView(R.id.spinner_trailer)
-    Spinner spinnerTrailer;*/
+    */
+/*@BindView(R.id.spinner_trailer)
+    Spinner spinnerTrailer;*//*
+
     @BindView(R.id.rv_thumbnail)
     internal var rvThumbnail: RecyclerView? = null
     @BindView(R.id.bt_showtrailer)
@@ -59,7 +62,7 @@ class DetailActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         val ex = intent.extras
         if (ex != null) {
-            movie = ex.get("Movie") as Movie
+            movie = ex.get("MovieBase") as MovieBase
         }
 
         val posterUri = "https://image.tmdb.org/t/p/w500/" + movie!!.posterPath
@@ -85,9 +88,11 @@ class DetailActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 //TODO
                 (trailers as ArrayList<Trailer>).addAll(response.body()!!.trailerList!!)
 
-                /*ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(DetailActivity.this, R.layout.support_simple_spinner_dropdown_item, detailPresenterImp.createSpinnerItem(trailers));
+                */
+/*ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(DetailActivity.this, R.layout.support_simple_spinner_dropdown_item, detailPresenterImp.createSpinnerItem(trailers));
                 arrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-                spinnerTrailer.setAdapter(arrayAdapter);*/
+                spinnerTrailer.setAdapter(arrayAdapter);*//*
+
 
                 detailAdapter.setTrailers(trailers)
                 detailAdapter.notifyDataSetChanged()
@@ -138,3 +143,4 @@ class DetailActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         startActivity(intent)
     }
 }
+*/
