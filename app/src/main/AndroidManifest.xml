@@ -7,11 +7,12 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Movie Kotlin"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".feature.home.HomeActivity"
+        <activity
+            android:name=".feature.home.HomeActivity"
             android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,13 +20,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".feature.detail.DetailActivity"
+        <!--
+            <activity android:name=".feature.detail.DetailActivity"
             android:screenOrientation="sensorPortrait"/>
+        -->
 
-        <provider
+
+        <!--
+            <provider
             android:name=".datahelper.DbContentProvider"
             android:authorities="vinova.henry.com.hotfilm.provider"
             android:exported="true" />
+        -->
 
         <activity
             android:name=".feature.trailer.YouTubeActivity"

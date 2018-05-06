@@ -1,3 +1,4 @@
+/*
 package vinova.henry.com.hotfilm.feature.trailer
 
 import android.os.Bundle
@@ -94,3 +95,4 @@ class YouTubeActivity : YouTubeBaseActivity() {
         private val YOUTUBE_API_KEY = "AIzaSyBPjiGer_AHJYZat5aXgW4VBz7dHdCGxXQ"
     }
 }
+*/
