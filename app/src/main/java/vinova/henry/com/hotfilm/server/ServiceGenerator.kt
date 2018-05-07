@@ -13,5 +13,4 @@ class ServiceGenerator{
                 .addConverterFactory(GsonConverterFactory.create())
                 .build().create(ITheMovieDBService::class.java)
     }
-
 }

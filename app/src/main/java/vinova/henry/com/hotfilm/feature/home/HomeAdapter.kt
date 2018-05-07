@@ -29,7 +29,7 @@ data class HomeAdapter(var movies: List<Movie>? = null) : RecyclerView.Adapter<H
         fun bind(movie: Movie?){
             itemView.tvTitle.text = movie?.title
             itemView.tvOverview.text = movie?.overview
-            Glide.with(itemView.context).load("https://image.tmdb.org/t/p/w500" + movie?.backdrop_path).into(itemView.imBackdrop)
+            Glide.with(itemView).load("https://image.tmdb.org/t/p/w500" + movie?.backdrop_path).into(itemView.imBackdrop)
         }
     }
 
