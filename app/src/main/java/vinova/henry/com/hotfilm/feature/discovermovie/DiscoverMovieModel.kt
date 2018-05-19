@@ -1,13 +1,11 @@
-package vinova.henry.com.hotfilm.feature.home
+package vinova.henry.com.hotfilm.feature.discovermovie
 
-import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
-import vinova.henry.com.hotfilm.models.Movie
 import vinova.henry.com.hotfilm.repo.DiscoverMovieRepo
 
-class HomeViewModel : ViewModel(){
+class DiscoverMovieModel : ViewModel(){
 
     val discoverMovieRepo = DiscoverMovieRepo()
     var page: MutableLiveData<Int> = MutableLiveData()

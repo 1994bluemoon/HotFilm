@@ -1,4 +1,4 @@
-package vinova.henry.com.hotfilm.feature.home
+package vinova.henry.com.hotfilm.feature.discovermovie
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.item_movie_cardview.view.*
 import vinova.henry.com.hotfilm.R
 import vinova.henry.com.hotfilm.models.Movie
 
-data class HomeAdapter(var movies: List<Movie>? = null) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+data class MovieAdapter(var movies: List<Movie>? = null) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
