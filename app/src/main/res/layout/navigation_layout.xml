@@ -24,7 +24,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <com.ramotion.navigationtoolbar.HeaderLayout
+    <vinova.henry.com.hotfilm.navigationtoolbar.HeaderLayout
         android:id="@+id/com_ramotion_header_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

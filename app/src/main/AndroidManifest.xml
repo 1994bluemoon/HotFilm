@@ -3,7 +3,7 @@
     package="vinova.henry.com.hotfilm">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <!-- android:screenOrientation="sensorPortrait" -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,12 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".feature.discovermovie.DiscoverMovieActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".feature.discovermovie.DiscoverMovieActivity">
+
         </activity>
         <!--
             <activity android:name=".feature.detail.DetailActivity"
@@ -31,9 +27,19 @@
             android:exported="true" />
         -->
 
-       <!-- <activity
+
+        <!--
+            <activity
             android:name=".feature.trailer.YouTubeActivity"
-            android:screenOrientation="sensorLandscape" />-->
+            android:screenOrientation="sensorLandscape" />
+        -->
+        <activity android:name=".feature.home.HomeActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
-    <!--android:screenOrientation="sensorPortrait"-->
+
 </manifest>

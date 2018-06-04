@@ -3,11 +3,11 @@ package vinova.henry.com.hotfilm.feature.discovermovie
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
-import vinova.henry.com.hotfilm.repo.DiscoverMovieRepo
+import vinova.henry.com.hotfilm.repo.MovieRepo
 
 class DiscoverMovieModel : ViewModel(){
 
-    val discoverMovieRepo = DiscoverMovieRepo()
+    val discoverMovieRepo = MovieRepo()
     var page: MutableLiveData<Int> = MutableLiveData()
     var movies = Transformations.switchMap(page, {
         discoverMovieRepo.getDescoverMovie(it)

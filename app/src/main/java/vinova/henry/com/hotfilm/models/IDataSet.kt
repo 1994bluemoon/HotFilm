@@ -3,7 +3,7 @@ package vinova.henry.com.hotfilm.models
 interface HeaderDataSet {
     data class ItemData(val gradient: Int,
                         val background: Int,
-                        val title: String)
+                        val title: String?)
 
     fun getItemData(pos: Int): ItemData
 }
