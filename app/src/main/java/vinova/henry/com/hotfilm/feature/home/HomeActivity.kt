@@ -1,12 +1,18 @@
 package vinova.henry.com.hotfilm.feature.home
 
 import android.animation.ObjectAnimator
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.graphics.Rect
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.graphics.drawable.DrawerArrowDrawable
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.FrameLayout
 import kotlinx.android.synthetic.main.activity_home.*
 import vinova.henry.com.hotfilm.R
@@ -17,16 +23,19 @@ import vinova.henry.com.hotfilm.navigationtoolbar.HeaderLayout
 import vinova.henry.com.hotfilm.navigationtoolbar.HeaderLayoutManager
 import vinova.henry.com.hotfilm.navigationtoolbar.NavigationToolBarLayout
 import vinova.henry.com.hotfilm.navigationtoolbar.SimpleSnapHelper
+import vinova.henry.com.hotfilm.pager.ViewPagerAdapter
 import vinova.henry.com.hotfilm.repo.HeaderRepo
 import kotlin.math.ceil
 import kotlin.math.max
 
 class HomeActivity : AppCompatActivity() {
 
-    private val itemCount = 4
+    private val itemCount = 18
+    private val dataSet = HeaderRepo()
     private var isExpanded = true
     private var prevAnchorPosition = 0
-    private val dataSet = HeaderRepo()
+    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var headerViewModel: HeaderViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,12 +44,29 @@ class HomeActivity : AppCompatActivity() {
         val header = findViewById<NavigationToolBarLayout>(R.id.navigation_toolbar_layout)
         val viewPager = findViewById<ViewPager>(R.id.pager)
 
+        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        headerViewModel = ViewModelProviders.of(this).get(HeaderViewModel::class.java)
+
         initActionBar()
+        initViewPager(header, viewPager)
         initHeader(header, viewPager)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_settings -> true
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
     private fun initActionBar() {
-        val toolbar = (navigation_toolbar_layout as NavigationToolBarLayout).toolBar
+        val tb = findViewById<NavigationToolBarLayout>(R.id.navigation_toolbar_layout)
+        val toolbar = tb.toolBar
         setSupportActionBar(toolbar)
         supportActionBar?.apply {
             setDisplayShowTitleEnabled(false)
@@ -48,14 +74,14 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    /*private fun initViewPager(header: NavigationToolBarLayout, viewPager: ViewPager) {
-        viewPager.adapter = ViewPagerAdapter(itemCount, dataSet.viewPagerDataSet)
+    private fun initViewPager(header: NavigationToolBarLayout, viewPager: ViewPager) {
+        viewPager.adapter = ViewPagerAdapter(itemCount, homeViewModel, this)
         viewPager.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
             override fun onPageSelected(position: Int) {
                 header.smoothScrollToPosition(position)
             }
         })
-    }*/
+    }
 
     private fun initHeader(header: NavigationToolBarLayout, viewPager: ViewPager) {
         val titleLeftOffset = resources.getDimensionPixelSize(R.dimen.title_left_offset)
@@ -66,7 +92,10 @@ class HomeActivity : AppCompatActivity() {
         val headerOverlay = findViewById<FrameLayout>(R.id.header_overlay)
         header.setItemTransformer(HeaderItemTransformer(headerOverlay,
                 titleLeftOffset, lineRightOffset, lineBottomOffset, lineTitleOffset))
-        header.setAdapter(HeaderAdapter(itemCount, dataSet.headerDataSet, headerOverlay))
+        /*header.setAdapter(HeaderAdapter(itemCount, headerViewModel, this, headerOverlay))*/
+        headerViewModel.headers?.observe(this, Observer {
+            header.setAdapter(HeaderAdapter(itemCount, it, headerOverlay))
+        })
 
         header.addItemChangeListener(object : HeaderLayoutManager.ItemChangeListener {
             override fun onItemChangeStarted(position: Int) {
@@ -91,7 +120,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun initDrawerArrow(header: NavigationToolBarLayout) {
         val drawerArrow = DrawerArrowDrawable(this)
-        drawerArrow.color = ContextCompat.getColor(this, android.R.color.white);
+        drawerArrow.color = ContextCompat.getColor(this, android.R.color.white)
         drawerArrow.progress = 1f
 
         header.addHeaderChangeStateListener(object : HeaderLayoutManager.HeaderChangeStateListener() {

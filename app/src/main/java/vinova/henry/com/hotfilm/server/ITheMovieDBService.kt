@@ -22,118 +22,118 @@ interface ITheMovieDBService{
     fun getGenre(@Query("api_key") api_key: String,
                  @Query("language") language: String) : Call<Genre>
 
-    @GET("/genre/28/movies")
+    @GET("/3/genre/28/movies")
     fun getActionMovie(@Query("api_key") api_key: String,
                        @Query("language") language: String,
                        @Query("sort_by") sort_by: String,
                        @Query("page") page: Int) : Call<MovieResponse>
 
-    @GET("/genre/12/movies")
+    @GET("/3/genre/12/movies")
     fun getAdventureMovie(@Query("api_key") api_key: String,
                           @Query("language") language: String,
                           @Query("sort_by") sort_by: String,
                           @Query("page") page: Int) : Call<MovieResponse>
 
 
-    @GET("/genre/16/movies")
+    @GET("/3/genre/16/movies")
     fun getAnimationMovie(@Query("api_key") api_key: String,
                           @Query("language") language: String,
                           @Query("sort_by") sort_by: String,
                           @Query("page") page: Int) : Call<MovieResponse>
 
 
-    @GET("/genre/99/movies")
+    @GET("/3/genre/99/movies")
     fun getDocumentaryMovie(@Query("api_key") api_key: String,
                             @Query("language") language: String,
                             @Query("sort_by") sort_by: String,
                             @Query("page") page: Int) : Call<MovieResponse>
 
 
-    @GET("/genre/10751/movies")
+    @GET("/3/genre/10751/movies")
     fun getFamilyMovie(@Query("api_key") api_key: String,
                        @Query("language") language: String,
                        @Query("sort_by") sort_by: String,
                        @Query("page") page: Int) : Call<MovieResponse>
 
 
-    @GET("/genre/80/movies")
+    @GET("/3/genre/80/movies")
     fun getCrimeMovie(@Query("api_key") api_key: String,
                       @Query("language") language: String,
                       @Query("sort_by") sort_by: String,
                       @Query("page") page: Int) : Call<MovieResponse>
 
 
-    @GET("/genre/18/movies")
+    @GET("/3/genre/18/movies")
     fun getDramaMovie(@Query("api_key") api_key: String,
                       @Query("language") language: String,
                       @Query("sort_by") sort_by: String,
                       @Query("page") page: Int) : Call<MovieResponse>
 
 
-    @GET("/genre/14/movies")
+    @GET("/3/genre/14/movies")
     fun getFantasyMovie(@Query("api_key") api_key: String,
                         @Query("language") language: String,
                         @Query("sort_by") sort_by: String,
                         @Query("page") page: Int) : Call<MovieResponse>
 
 
-    @GET("/genre/36/movies")
+    @GET("/3/genre/36/movies")
     fun getHistoryMovie(@Query("api_key") api_key: String,
                         @Query("language") language: String,
                         @Query("sort_by") sort_by: String,
                         @Query("page") page: Int) : Call<MovieResponse>
 
 
-    @GET("/genre/27/movies")
+    @GET("/3/genre/27/movies")
     fun getHorrorMovie(@Query("api_key") api_key: String,
                        @Query("language") language: String,
                        @Query("sort_by") sort_by: String,
                        @Query("page") page: Int) : Call<MovieResponse>
 
 
-    @GET("/genre/10402/movies")
+    @GET("/3/genre/10402/movies")
     fun getMusicMovie(@Query("api_key") api_key: String,
                       @Query("language") language: String,
                       @Query("sort_by") sort_by: String,
                       @Query("page") page: Int) : Call<MovieResponse>
 
-    @GET("/genre/9648/movies")
+    @GET("/3/genre/9648/movies")
     fun getMysteryMovie(@Query("api_key") api_key: String,
                         @Query("language") language: String,
                         @Query("sort_by") sort_by: String,
                         @Query("page") page: Int) : Call<MovieResponse>
 
-    @GET("/genre/10794/movies")
+    @GET("/3/genre/10749/movies")
     fun getRomanceMovie(@Query("api_key") api_key: String,
                         @Query("language") language: String,
                         @Query("sort_by") sort_by: String,
                         @Query("page") page: Int) : Call<MovieResponse>
 
-    @GET("/genre/878/movies")
+    @GET("/3/genre/878/movies")
     fun getScienceMovie(@Query("api_key") api_key: String,
                         @Query("language") language: String,
                         @Query("sort_by") sort_by: String,
                         @Query("page") page: Int) : Call<MovieResponse>
 
-    @GET("/genre/10770/movies")
+    @GET("/3/genre/10770/movies")
     fun getTVMovie(@Query("api_key") api_key: String,
                    @Query("language") language: String,
                    @Query("sort_by") sort_by: String,
                    @Query("page") page: Int) : Call<MovieResponse>
 
-    @GET("/genre/53/movies")
+    @GET("/3/genre/53/movies")
     fun getThrillerMovie(@Query("api_key") api_key: String,
                          @Query("language") language: String,
                          @Query("sort_by") sort_by: String,
                          @Query("page") page: Int) : Call<MovieResponse>
 
-    @GET("/genre/10752/movies")
+    @GET("/3/genre/10752/movies")
     fun getWarMovie(@Query("api_key") api_key: String,
                     @Query("language") language: String,
                     @Query("sort_by") sort_by: String,
                     @Query("page") page: Int) : Call<MovieResponse>
 
-    @GET("/genre/37/movies")
+    @GET("/3/genre/37/movies")
     fun getWesternMovie(@Query("api_key") api_key: String,
                         @Query("language") language: String,
                         @Query("sort_by") sort_by: String,

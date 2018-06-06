@@ -1,17 +1,21 @@
 package vinova.henry.com.hotfilm.header
 
+import android.arch.lifecycle.LifecycleOwner
+import android.arch.lifecycle.Observer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
 import vinova.henry.com.hotfilm.R
+import vinova.henry.com.hotfilm.feature.home.HeaderViewModel
+import vinova.henry.com.hotfilm.models.Header
 import vinova.henry.com.hotfilm.models.HeaderDataSet
 import vinova.henry.com.hotfilm.navigationtoolbar.HeaderLayout
 
 class HeaderAdapter(
         private val count: Int,
-        private val dataSet: HeaderDataSet,
+        private val headers: List<Header>?,
         overlay: FrameLayout) : HeaderLayout.Adapter<HeaderItem>() {
 
     private val textsLayout = overlay.findViewById<FrameLayout>(R.id.texts)
@@ -25,7 +29,7 @@ class HeaderAdapter(
     }
 
     override fun onBindViewHolder(holder: HeaderItem, position: Int) {
-        holder.setContent(dataSet.getItemData(position), getNextOverlayTitle(), getNextOverlayLine())
+        holder.setContent(headers?.get(position), getNextOverlayTitle(), getNextOverlayLine())
     }
 
     override fun onViewRecycled(holder: HeaderItem) {
