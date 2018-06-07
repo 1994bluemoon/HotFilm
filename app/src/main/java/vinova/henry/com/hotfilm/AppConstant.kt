@@ -2,9 +2,10 @@ package vinova.henry.com.hotfilm
 
 import vinova.henry.com.hotfilm.models.Genre
 
-const val BASE_URL: String = "https://api.themoviedb.org/3/"
+const val BASE_URL: String = "https://api.themoviedb.org"
 const val API_KEY: String = "54715436e1813692f121feb9fd97709e"
-val  GENRE_ACTION: Genre = Genre("28", "Action")
+
+val GENRE_ACTION: Genre = Genre("28", "Action")
 val GENRE_ADVENTURE: Genre = Genre("12", "Adventure")
 val GENRE_ANIMATION: Genre = Genre("16", "Animation")
 val GENRE_CRIME: Genre = Genre("80", "Crime")

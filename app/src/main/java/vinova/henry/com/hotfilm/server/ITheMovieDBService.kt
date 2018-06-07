@@ -9,16 +9,23 @@ import vinova.henry.com.hotfilm.models.TrailerResult
 
 interface ITheMovieDBService{
 
-    @GET("discover/movie")
+    @GET("/3/discover/movie")
     fun getDiscoverMovie(@Query("api_key") api_key: String,
                          @Query("language") language: String,
                          @Query("sort_by") sort_by: String,
                          @Query("page") page: Int): Call<MovieResponse>
 
-    @GET("videos")
+    @GET("/3/videos")
     fun getMovieTrailer(@Query("api_key") api_key: String): Call<TrailerResult>
 
-    @GET("genre/movie/list")
+    @GET("/3/search/movie")
+    fun getSearchResult(@Query("api_key") api_key: String,
+                        @Query("language") language: String,
+                        @Query("page") page: Int,
+                        @Query("include_adult") include_adult: String,
+                        @Query("query") query: String) : Call<MovieResponse>
+
+    @GET("/3/genre/movie/list")
     fun getGenre(@Query("api_key") api_key: String,
                  @Query("language") language: String) : Call<Genre>
 

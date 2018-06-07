@@ -2,6 +2,7 @@ package vinova.henry.com.hotfilm.repo
 
 import android.arch.lifecycle.MutableLiveData
 import android.hardware.camera2.CameraCaptureSession
+import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,11 +17,10 @@ class MovieRepo{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getDiscoverMovie(API_KEY, "en-US", "popularity.desc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-
+                errorHandle()
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-
                 movies?.value = response?.body()?.results
             }
         })
@@ -31,13 +31,13 @@ class MovieRepo{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getActionMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                errorHandle()
+                getActionMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 movies?.value = response?.body()?.results
             }
-
         })
         return movies
     }
@@ -45,7 +45,8 @@ class MovieRepo{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getAdventureMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                errorHandle()
+                getAdventureMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
@@ -59,7 +60,8 @@ class MovieRepo{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getAnimationMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                errorHandle()
+                getAnimationMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
@@ -73,7 +75,8 @@ class MovieRepo{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getDocumentaryMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                errorHandle()
+                getDocumentaryMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
@@ -88,7 +91,8 @@ class MovieRepo{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getFamilyMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                errorHandle()
+                getFamilyMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
@@ -102,7 +106,8 @@ class MovieRepo{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getCrimeMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                errorHandle()
+                getCrimeMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
@@ -116,7 +121,8 @@ class MovieRepo{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getDramaMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                errorHandle()
+                getDramaMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
@@ -130,7 +136,8 @@ class MovieRepo{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getFantasyMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                errorHandle()
+                getFantasyMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
@@ -144,7 +151,8 @@ class MovieRepo{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getHistoryMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                errorHandle()
+                getHistoryMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
@@ -158,7 +166,8 @@ class MovieRepo{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getHorrorMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                errorHandle()
+                getHorrorMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
@@ -172,7 +181,8 @@ class MovieRepo{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getMusicMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                errorHandle()
+                getMusicMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
@@ -186,7 +196,8 @@ class MovieRepo{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getMysteryMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                errorHandle()
+                getMysteryMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
@@ -200,7 +211,8 @@ class MovieRepo{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getRomanceMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                errorHandle()
+                getRomanceMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
@@ -214,7 +226,8 @@ class MovieRepo{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getScienceMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                errorHandle()
+                getScienceMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
@@ -228,7 +241,8 @@ class MovieRepo{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getTVMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                errorHandle()
+                getTVMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
@@ -242,7 +256,8 @@ class MovieRepo{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getThrillerMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                errorHandle()
+                getThrillerMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
@@ -257,7 +272,8 @@ class MovieRepo{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getWarMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                errorHandle()
+                getWarMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
@@ -271,7 +287,8 @@ class MovieRepo{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getWesternMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                errorHandle()
+                getWesternMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
@@ -280,5 +297,9 @@ class MovieRepo{
 
         })
         return movies
+    }
+
+    fun errorHandle(){
+        Log.d("get server data", "fail")
     }
 }

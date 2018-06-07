@@ -67,7 +67,7 @@ class HomeViewModel : ViewModel(){
         movieRepo.getRomanceMovie(it)
     })
     var scienceFictionMovies = Transformations.switchMap(pageScienceFiction, {
-        movieRepo.getActionMovie(it)
+        movieRepo.getScienceMovie(it)
     })
     var tvMovies = Transformations.switchMap(pageTVMovie, {
         movieRepo.getTVMovie(it)

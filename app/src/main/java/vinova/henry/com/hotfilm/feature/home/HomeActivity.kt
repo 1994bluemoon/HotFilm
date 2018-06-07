@@ -2,23 +2,22 @@ package vinova.henry.com.hotfilm.feature.home
 
 import android.animation.ObjectAnimator
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.graphics.Rect
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.ShareCompat
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.graphics.drawable.DrawerArrowDrawable
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.FrameLayout
-import kotlinx.android.synthetic.main.activity_home.*
 import vinova.henry.com.hotfilm.R
+import vinova.henry.com.hotfilm.feature.search.SearchActivity
 import vinova.henry.com.hotfilm.header.HeaderAdapter
 import vinova.henry.com.hotfilm.header.HeaderItemTransformer
-import vinova.henry.com.hotfilm.models.HeaderDataSet
 import vinova.henry.com.hotfilm.navigationtoolbar.HeaderLayout
 import vinova.henry.com.hotfilm.navigationtoolbar.HeaderLayoutManager
 import vinova.henry.com.hotfilm.navigationtoolbar.NavigationToolBarLayout
@@ -54,13 +53,16 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
+        menuInflater.inflate(R.menu.menu_search, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_search -> {
+                startActivity(Intent(this@HomeActivity, SearchActivity::class.java))
+                return false
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
