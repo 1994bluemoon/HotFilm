@@ -35,6 +35,7 @@ class HomeActivity : AppCompatActivity(), IMovieEvent {
     private var prevAnchorPosition = 0
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var headerViewModel: HeaderViewModel
+    private var curItem: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,8 +73,64 @@ class HomeActivity : AppCompatActivity(), IMovieEvent {
         Toast.makeText(this, movie?.title, Toast.LENGTH_SHORT ).show()
     }
 
-    override fun onLoadMoreListener() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onLoadMoreListener(currentPage: Int) {
+        when (curItem){
+            0 -> {
+                homeViewModel.setPageAction(currentPage + 1)
+            }
+            1 -> {
+                homeViewModel.setPageAdventure(currentPage + 1)
+            }
+            2 -> {
+                homeViewModel.setPageAnimation(currentPage + 1)
+            }
+            3 -> {
+                homeViewModel.setPageCrime(currentPage + 1)
+            }
+            4 -> {
+                homeViewModel.setPageDocumentary(currentPage + 1)
+            }
+            5 -> {
+                homeViewModel.setPageDrama(currentPage + 1)
+            }
+            6 -> {
+                homeViewModel.setPageFamily(currentPage + 1)
+            }
+            7 -> {
+                homeViewModel.setPageFantasy(currentPage + 1)
+            }
+            8 -> {
+                homeViewModel.setPageHistory(currentPage + 1)
+            }
+            9 -> {
+                homeViewModel.setPageHorror(currentPage + 1)
+            }
+            10 -> {
+                homeViewModel.setPageMusic(currentPage + 1)
+            }
+            11 -> {
+                homeViewModel.setPageMystery(currentPage + 1)
+            }
+            12 -> {
+                homeViewModel.setPageRomance(currentPage + 1)
+            }
+            13 -> {
+                homeViewModel.setPageScienceFiction(currentPage + 1)
+            }
+            14 -> {
+                homeViewModel.setPageThriller(currentPage + 1)
+            }
+            15 -> {
+                homeViewModel.setPageTVMovie(currentPage + 1)
+            }
+            16 -> {
+                homeViewModel.setPageWar(currentPage + 1)
+            }
+            17 -> {
+                homeViewModel.setPageWestern(currentPage + 1)
+            }
+
+        }
     }
 
     private fun initActionBar() {
@@ -91,6 +148,7 @@ class HomeActivity : AppCompatActivity(), IMovieEvent {
         viewPager.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
             override fun onPageSelected(position: Int) {
                 header.smoothScrollToPosition(position)
+                curItem = position
             }
         })
     }

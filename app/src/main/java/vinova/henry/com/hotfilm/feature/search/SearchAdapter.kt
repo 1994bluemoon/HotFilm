@@ -17,6 +17,7 @@ class SearchAdapter(private val iMovieEvent: IMovieEvent?) : RecyclerView.Adapte
 
     fun setAdapterMovies(movies: List<Movie>?){
         this.movies?.addAll(movies ?: ArrayList<Movie>())
+        notifyDataSetChanged()
     }
 
     fun clearData(){

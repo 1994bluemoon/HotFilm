@@ -1,5 +1,6 @@
 package vinova.henry.com.hotfilm.pager
 
+import android.annotation.SuppressLint
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +9,14 @@ import vinova.henry.com.hotfilm.R
 import vinova.henry.com.hotfilm.interf.IMovieEvent
 import vinova.henry.com.hotfilm.models.Movie
 
-class PageAdapter(private val movies: List<Movie>?,
-                  private val iMovieEvent: IMovieEvent?) : RecyclerView.Adapter<PageItem>() {
+class PageAdapter(private val iMovieEvent: IMovieEvent?) : RecyclerView.Adapter<PageItem>() {
+
+    private var movies: ArrayList<Movie>? = ArrayList<Movie>()
+
+    fun setMovies(movies: List<Movie>?){
+        this.movies?.addAll(movies ?: ArrayList<Movie>())
+        notifyDataSetChanged()
+    }
 
     override fun getItemCount() = movies?.size ?: 0
 
@@ -21,7 +28,7 @@ class PageAdapter(private val movies: List<Movie>?,
         return createItemMovie(parent)
     }
 
-    override fun onBindViewHolder(holder: PageItem, position: Int) {
+    override fun onBindViewHolder(holder: PageItem, @SuppressLint("RecyclerView") position: Int) {
         when (holder) {
             is ItemMovie -> { holder.setContent(movies?.get(position)) }
         }
@@ -29,13 +36,8 @@ class PageAdapter(private val movies: List<Movie>?,
             override fun onClick(v: View?) {
                 iMovieEvent?.onItemRvClicked(movies?.get(position))
             }
-
         })
     }
-
-    /*override fun getItemViewType(position: Int): Int {
-        return (if (position == 1) ItemType.IMAGE else ItemType.USER).value
-    }*/
 
     override fun onViewRecycled(holder: PageItem) {
         super.onViewRecycled(holder)
@@ -46,6 +48,11 @@ class PageAdapter(private val movies: List<Movie>?,
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie_cardview, parent, false)
         return ItemMovie(view)
     }
+
+
+    /*override fun getItemViewType(position: Int): Int {
+        return (if (position == 1) ItemType.IMAGE else ItemType.USER).value
+    }*/
 
     /*private fun createItemImage(parent: ViewGroup): ItemImage {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_image, parent, false)

@@ -11,7 +11,6 @@ import android.support.v7.widget.SearchView
 import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_search.*
 import vinova.henry.com.hotfilm.R
 import vinova.henry.com.hotfilm.feature.home.HomeActivity
@@ -42,7 +41,6 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, IMov
         searchViewModel.moviesQueryChange.observe(this, Observer {
             searchAdapter.clearData()
             searchAdapter.setAdapterMovies(it?.results)
-            searchAdapter.notifyDataSetChanged()
             totalPage = it?.total_pages
             tvResultCount.text = "Total ${it?.total_results} results"
             loaded()
@@ -50,22 +48,21 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, IMov
 
         searchViewModel.moviesPageChange.observe(this, Observer {
             searchAdapter.setAdapterMovies(it?.results)
-            searchAdapter.notifyDataSetChanged()
             loaded()
         })
 
         rvSearch.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                val totalItemCount = linearLayoutManager.getItemCount();
-                val lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
+                val totalItemCount = linearLayoutManager.itemCount
+                val lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition()
 
                 if (lastVisibleItem == totalItemCount - 10 && !isLoading){
                     if (curPage ?: 0 < totalPage ?: 0){
                         curPage = curPage?.plus(1)
                         searchViewModel.setPage(curPage)
                         Log.d("curPage", curPage.toString())
-                        Toast.makeText(this@SearchActivity, "loading", Toast.LENGTH_SHORT).show()
+                        loading()
                     }
                 }
             }
@@ -95,7 +92,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, IMov
         Log.d("click", movie?.title)
     }
 
-    override fun onLoadMoreListener() {
+    override fun onLoadMoreListener(currentPage: Int) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

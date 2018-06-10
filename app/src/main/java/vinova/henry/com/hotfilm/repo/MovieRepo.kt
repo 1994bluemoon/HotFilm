@@ -46,13 +46,11 @@ class MovieRepo{
         ServiceGenerator.theMovieDBService.getAdventureMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
-                getAdventureMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 movies?.value = response?.body()
             }
-
         })
         return movies
     }
@@ -61,13 +59,11 @@ class MovieRepo{
         ServiceGenerator.theMovieDBService.getAnimationMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
-                getAnimationMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 movies?.value = response?.body()
             }
-
         })
         return movies
     }
@@ -76,13 +72,11 @@ class MovieRepo{
         ServiceGenerator.theMovieDBService.getDocumentaryMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
-                getDocumentaryMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 movies?.value = response?.body()
             }
-
         })
         return movies
     }
@@ -92,13 +86,11 @@ class MovieRepo{
         ServiceGenerator.theMovieDBService.getFamilyMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
-                getFamilyMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 movies?.value = response?.body()
             }
-
         })
         return movies
     }
@@ -107,13 +99,11 @@ class MovieRepo{
         ServiceGenerator.theMovieDBService.getCrimeMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
-                getCrimeMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 movies?.value = response?.body()
             }
-
         })
         return movies
     }
@@ -122,13 +112,11 @@ class MovieRepo{
         ServiceGenerator.theMovieDBService.getDramaMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
-                getDramaMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 movies?.value = response?.body()
             }
-
         })
         return movies
     }
@@ -137,13 +125,11 @@ class MovieRepo{
         ServiceGenerator.theMovieDBService.getFantasyMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
-                getFantasyMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 movies?.value = response?.body()
             }
-
         })
         return movies
     }
@@ -152,13 +138,11 @@ class MovieRepo{
         ServiceGenerator.theMovieDBService.getHistoryMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
-                getHistoryMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 movies?.value = response?.body()
             }
-
         })
         return movies
     }
@@ -167,13 +151,11 @@ class MovieRepo{
         ServiceGenerator.theMovieDBService.getHorrorMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
-                getHorrorMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 movies?.value = response?.body()
             }
-
         })
         return movies
     }
@@ -182,13 +164,11 @@ class MovieRepo{
         ServiceGenerator.theMovieDBService.getMusicMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
-                getMusicMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 movies?.value = response?.body()
             }
-
         })
         return movies
     }
@@ -197,13 +177,11 @@ class MovieRepo{
         ServiceGenerator.theMovieDBService.getMysteryMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
-                getMysteryMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 movies?.value = response?.body()
             }
-
         })
         return movies
     }
@@ -212,13 +190,11 @@ class MovieRepo{
         ServiceGenerator.theMovieDBService.getRomanceMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
-                getRomanceMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 movies?.value = response?.body()
             }
-
         })
         return movies
     }
@@ -227,13 +203,11 @@ class MovieRepo{
         ServiceGenerator.theMovieDBService.getScienceMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
-                getScienceMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 movies?.value = response?.body()
             }
-
         })
         return movies
     }
@@ -242,13 +216,11 @@ class MovieRepo{
         ServiceGenerator.theMovieDBService.getTVMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
-                getTVMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 movies?.value = response?.body()
             }
-
         })
         return movies
     }
@@ -257,13 +229,11 @@ class MovieRepo{
         ServiceGenerator.theMovieDBService.getThrillerMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
-                getThrillerMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 movies?.value = response?.body()
             }
-
         })
         return movies
     }
@@ -273,13 +243,11 @@ class MovieRepo{
         ServiceGenerator.theMovieDBService.getWarMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
-                getWarMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 movies?.value = response?.body()
             }
-
         })
         return movies
     }
@@ -288,13 +256,11 @@ class MovieRepo{
         ServiceGenerator.theMovieDBService.getWesternMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
-                getWesternMovie(page)
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 movies?.value = response?.body()
             }
-
         })
         return movies
     }
