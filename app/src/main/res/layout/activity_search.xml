@@ -43,7 +43,6 @@
     </android.support.constraint.ConstraintLayout>
 
     <TextView
-        android:textAlignment="center"
         android:id="@+id/tvResultCount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -51,9 +50,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Total 0 result"
+        android:textAlignment="center"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pbLoading"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <android.support.v7.widget.RecyclerView
@@ -65,5 +65,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvResultCount" />
+
+
+    <ProgressBar
+        android:visibility="invisible"
+        android:id="@+id/pbLoading"
+        android:layout_width="20dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvResultCount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvResultCount" />
 
 </android.support.constraint.ConstraintLayout>

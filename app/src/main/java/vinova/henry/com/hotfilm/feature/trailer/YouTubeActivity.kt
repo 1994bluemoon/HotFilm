@@ -2,28 +2,19 @@
 package vinova.henry.com.hotfilm.feature.trailer
 
 import android.os.Bundle
-
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayerView
-
-import butterknife.BindView
-import butterknife.ButterKnife
 import vinova.henry.com.hotfilm.R
 import vinova.henry.com.hotfilm.models.Trailer
 
 class YouTubeActivity : YouTubeBaseActivity() {
     internal lateinit var trailer: Trailer
 
-    @BindView(R.id.youtube_player)
-    internal var youtubePlayer: YouTubePlayerView? = null
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_you_tube)
-        ButterKnife.bind(this)
 
         val ex = intent.extras
         if (ex != null) {

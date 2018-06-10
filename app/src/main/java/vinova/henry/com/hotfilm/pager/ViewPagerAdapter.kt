@@ -9,14 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import vinova.henry.com.hotfilm.R
 import vinova.henry.com.hotfilm.feature.home.HomeViewModel
+import vinova.henry.com.hotfilm.interf.IMovieEvent
 
 class ViewPagerAdapter(private val count: Int,
                        private val homeViewModel: HomeViewModel,
-                       private val homeLifecycle: LifecycleOwner) : PagerAdapter() {
-
-    /*private companion object {
-        val random = Random()
-    }*/
+                       private val homeLifecycle: LifecycleOwner,
+                       private val iMovieEvent: IMovieEvent?) : PagerAdapter() {
 
     override fun getCount(): Int = count
 
@@ -40,24 +38,24 @@ class ViewPagerAdapter(private val count: Int,
         recyclerView.adapter = adapter*/
 
         when (position){
-            0 -> { homeViewModel.actionMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it) }) }
-            1 -> { homeViewModel.adventureMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it) }) }
-            2 -> { homeViewModel.animationMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it) }) }
-            3 -> { homeViewModel.crimeMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it) }) }
-            4 -> { homeViewModel.documentaryMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it) }) }
-            5 -> { homeViewModel.dramaMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it) }) }
-            6 -> { homeViewModel.familyMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it) }) }
-            7 -> { homeViewModel.fantasyMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it) }) }
-            8 -> { homeViewModel.historyMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it) }) }
-            9 -> { homeViewModel.horrorMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it) }) }
-            10 -> { homeViewModel.musicMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it) }) }
-            11 -> { homeViewModel.mysteryMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it) }) }
-            12 -> { homeViewModel.romanceMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it) }) }
-            13 -> { homeViewModel.scienceFictionMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it) }) }
-            14 -> { homeViewModel.thrillerMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it) }) }
-            15 -> { homeViewModel.tvMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it) }) }
-            16 -> { homeViewModel.warMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it) }) }
-            17 -> { homeViewModel.westernMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it) }) }
+            0 -> { homeViewModel.actionMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it?.results, iMovieEvent) }) }
+            1 -> { homeViewModel.adventureMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it?.results, iMovieEvent) }) }
+            2 -> { homeViewModel.animationMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it?.results, iMovieEvent) }) }
+            3 -> { homeViewModel.crimeMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it?.results, iMovieEvent) }) }
+            4 -> { homeViewModel.documentaryMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it?.results, iMovieEvent) }) }
+            5 -> { homeViewModel.dramaMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it?.results, iMovieEvent) }) }
+            6 -> { homeViewModel.familyMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it?.results, iMovieEvent) }) }
+            7 -> { homeViewModel.fantasyMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it?.results, iMovieEvent) }) }
+            8 -> { homeViewModel.historyMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it?.results, iMovieEvent) }) }
+            9 -> { homeViewModel.horrorMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it?.results, iMovieEvent) }) }
+            10 -> { homeViewModel.musicMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it?.results, iMovieEvent) }) }
+            11 -> { homeViewModel.mysteryMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it?.results, iMovieEvent) }) }
+            12 -> { homeViewModel.romanceMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it?.results, iMovieEvent) }) }
+            13 -> { homeViewModel.scienceFictionMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it?.results, iMovieEvent) }) }
+            14 -> { homeViewModel.thrillerMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it?.results, iMovieEvent) }) }
+            15 -> { homeViewModel.tvMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it?.results, iMovieEvent) }) }
+            16 -> { homeViewModel.warMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it?.results, iMovieEvent) }) }
+            17 -> { homeViewModel.westernMovies.observe(homeLifecycle, Observer { recyclerView.adapter = PageAdapter(it?.results, iMovieEvent) }) }
         }
     }
 

@@ -11,17 +11,19 @@ class SearchViewModel : ViewModel(){
     var page: MutableLiveData<Int> = MutableLiveData()
     var query: MutableLiveData<String> = MutableLiveData()
 
-    var movies = Transformations.switchMap(query, {
-        searchRepo.getSearchResult(it, page.value ?: 1)
+    var moviesQueryChange = Transformations.switchMap(query, {
+        searchRepo.getSearchResult(it, 1)
+    })
+
+    var moviesPageChange = Transformations.switchMap(page, {
+        searchRepo.getSearchResult(this@SearchViewModel.query.value ?: "", it)
     })
 
     fun setQuery(query: String?){
         this.query.value = query
-        this.page.value = 1
     }
 
     fun setPage(page: Int?){
         this.page.value = page
-        movies = searchRepo.getSearchResult(this.query.value ?: "", this.page.value ?: 1)
     }
 }

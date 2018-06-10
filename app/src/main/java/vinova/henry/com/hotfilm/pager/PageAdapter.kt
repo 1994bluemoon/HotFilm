@@ -2,21 +2,14 @@ package vinova.henry.com.hotfilm.pager
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import vinova.henry.com.hotfilm.R
+import vinova.henry.com.hotfilm.interf.IMovieEvent
 import vinova.henry.com.hotfilm.models.Movie
 
-class PageAdapter(private val movies: List<Movie>?) : RecyclerView.Adapter<PageItem>() {
-
-    /*private enum class ItemType(val value: Int) {
-        USER(1),
-        IMAGE(2);
-
-        companion object {
-            private val map = ItemType.values().associateBy(ItemType::value)
-            fun fromInt(type: Int, defaultValue: ItemType = USER) = map.getOrElse(type, {defaultValue})
-        }
-    }*/
+class PageAdapter(private val movies: List<Movie>?,
+                  private val iMovieEvent: IMovieEvent?) : RecyclerView.Adapter<PageItem>() {
 
     override fun getItemCount() = movies?.size ?: 0
 
@@ -32,6 +25,12 @@ class PageAdapter(private val movies: List<Movie>?) : RecyclerView.Adapter<PageI
         when (holder) {
             is ItemMovie -> { holder.setContent(movies?.get(position)) }
         }
+        holder.itemView.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(v: View?) {
+                iMovieEvent?.onItemRvClicked(movies?.get(position))
+            }
+
+        })
     }
 
     /*override fun getItemViewType(position: Int): Int {
@@ -52,4 +51,14 @@ class PageAdapter(private val movies: List<Movie>?) : RecyclerView.Adapter<PageI
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_image, parent, false)
         return ItemImage(view)
     }*/
+
+    /*private enum class ItemType(val value: Int) {
+       USER(1),
+       IMAGE(2);
+
+       companion object {
+           private val map = ItemType.values().associateBy(ItemType::value)
+           fun fromInt(type: Int, defaultValue: ItemType = USER) = map.getOrElse(type, {defaultValue})
+       }
+   }*/
 }

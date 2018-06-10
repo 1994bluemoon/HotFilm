@@ -5,32 +5,32 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.graphics.Rect
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.ShareCompat
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.graphics.drawable.DrawerArrowDrawable
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.FrameLayout
+import android.widget.Toast
 import vinova.henry.com.hotfilm.R
 import vinova.henry.com.hotfilm.feature.search.SearchActivity
 import vinova.henry.com.hotfilm.header.HeaderAdapter
 import vinova.henry.com.hotfilm.header.HeaderItemTransformer
+import vinova.henry.com.hotfilm.interf.IMovieEvent
+import vinova.henry.com.hotfilm.models.Movie
 import vinova.henry.com.hotfilm.navigationtoolbar.HeaderLayout
 import vinova.henry.com.hotfilm.navigationtoolbar.HeaderLayoutManager
 import vinova.henry.com.hotfilm.navigationtoolbar.NavigationToolBarLayout
 import vinova.henry.com.hotfilm.navigationtoolbar.SimpleSnapHelper
 import vinova.henry.com.hotfilm.pager.ViewPagerAdapter
-import vinova.henry.com.hotfilm.repo.HeaderRepo
 import kotlin.math.ceil
 import kotlin.math.max
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), IMovieEvent {
 
     private val itemCount = 18
-    private val dataSet = HeaderRepo()
     private var isExpanded = true
     private var prevAnchorPosition = 0
     private lateinit var homeViewModel: HomeViewModel
@@ -61,11 +61,21 @@ class HomeActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_search -> {
                 startActivity(Intent(this@HomeActivity, SearchActivity::class.java))
+                this@HomeActivity.finish()
                 return false
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+    override fun onItemRvClicked(movie: Movie?) {
+        Toast.makeText(this, movie?.title, Toast.LENGTH_SHORT ).show()
+    }
+
+    override fun onLoadMoreListener() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     private fun initActionBar() {
         val tb = findViewById<NavigationToolBarLayout>(R.id.navigation_toolbar_layout)
         val toolbar = tb.toolBar
@@ -77,7 +87,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initViewPager(header: NavigationToolBarLayout, viewPager: ViewPager) {
-        viewPager.adapter = ViewPagerAdapter(itemCount, homeViewModel, this)
+        viewPager.adapter = ViewPagerAdapter(itemCount, homeViewModel, this, this)
         viewPager.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
             override fun onPageSelected(position: Int) {
                 header.smoothScrollToPosition(position)

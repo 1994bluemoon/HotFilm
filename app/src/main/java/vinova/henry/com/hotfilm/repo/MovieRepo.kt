@@ -27,8 +27,8 @@ class MovieRepo{
         return movies
     }
 
-    fun getActionMovie(page: Int) : MutableLiveData<List<Movie>>?{
-        val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
+    fun getActionMovie(page: Int) : MutableLiveData<MovieResponse>?{
+        val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getActionMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
@@ -36,13 +36,13 @@ class MovieRepo{
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-                movies?.value = response?.body()?.results
+                movies?.value = response?.body()
             }
         })
         return movies
     }
-    fun getAdventureMovie(page: Int) : MutableLiveData<List<Movie>>?{
-        val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
+    fun getAdventureMovie(page: Int) : MutableLiveData<MovieResponse>?{
+        val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getAdventureMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
@@ -50,14 +50,14 @@ class MovieRepo{
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-                movies?.value = response?.body()?.results
+                movies?.value = response?.body()
             }
 
         })
         return movies
     }
-    fun getAnimationMovie(page: Int) : MutableLiveData<List<Movie>>?{
-        val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
+    fun getAnimationMovie(page: Int) : MutableLiveData<MovieResponse>?{
+        val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getAnimationMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
@@ -65,14 +65,14 @@ class MovieRepo{
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-                movies?.value = response?.body()?.results
+                movies?.value = response?.body()
             }
 
         })
         return movies
     }
-    fun getDocumentaryMovie(page: Int) : MutableLiveData<List<Movie>>?{
-        val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
+    fun getDocumentaryMovie(page: Int) : MutableLiveData<MovieResponse>?{
+        val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getDocumentaryMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
@@ -80,15 +80,15 @@ class MovieRepo{
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-                movies?.value = response?.body()?.results
+                movies?.value = response?.body()
             }
 
         })
         return movies
     }
 
-    fun getFamilyMovie(page: Int) : MutableLiveData<List<Movie>>?{
-        val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
+    fun getFamilyMovie(page: Int) : MutableLiveData<MovieResponse>?{
+        val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getFamilyMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
@@ -96,14 +96,14 @@ class MovieRepo{
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-                movies?.value = response?.body()?.results
+                movies?.value = response?.body()
             }
 
         })
         return movies
     }
-    fun getCrimeMovie(page: Int) : MutableLiveData<List<Movie>>?{
-        val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
+    fun getCrimeMovie(page: Int) : MutableLiveData<MovieResponse>?{
+        val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getCrimeMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
@@ -111,14 +111,14 @@ class MovieRepo{
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-                movies?.value = response?.body()?.results
+                movies?.value = response?.body()
             }
 
         })
         return movies
     }
-    fun getDramaMovie(page: Int) : MutableLiveData<List<Movie>>?{
-        val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
+    fun getDramaMovie(page: Int) : MutableLiveData<MovieResponse>?{
+        val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getDramaMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
@@ -126,14 +126,14 @@ class MovieRepo{
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-                movies?.value = response?.body()?.results
+                movies?.value = response?.body()
             }
 
         })
         return movies
     }
-    fun getFantasyMovie(page: Int) : MutableLiveData<List<Movie>>?{
-        val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
+    fun getFantasyMovie(page: Int) : MutableLiveData<MovieResponse>?{
+        val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getFantasyMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
@@ -141,14 +141,14 @@ class MovieRepo{
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-                movies?.value = response?.body()?.results
+                movies?.value = response?.body()
             }
 
         })
         return movies
     }
-    fun getHistoryMovie(page: Int) : MutableLiveData<List<Movie>>?{
-        val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
+    fun getHistoryMovie(page: Int) : MutableLiveData<MovieResponse>?{
+        val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getHistoryMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
@@ -156,14 +156,14 @@ class MovieRepo{
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-                movies?.value = response?.body()?.results
+                movies?.value = response?.body()
             }
 
         })
         return movies
     }
-    fun getHorrorMovie(page: Int) : MutableLiveData<List<Movie>>?{
-        val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
+    fun getHorrorMovie(page: Int) : MutableLiveData<MovieResponse>?{
+        val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getHorrorMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
@@ -171,14 +171,14 @@ class MovieRepo{
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-                movies?.value = response?.body()?.results
+                movies?.value = response?.body()
             }
 
         })
         return movies
     }
-    fun getMusicMovie(page: Int) : MutableLiveData<List<Movie>>?{
-        val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
+    fun getMusicMovie(page: Int) : MutableLiveData<MovieResponse>?{
+        val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getMusicMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
@@ -186,14 +186,14 @@ class MovieRepo{
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-                movies?.value = response?.body()?.results
+                movies?.value = response?.body()
             }
 
         })
         return movies
     }
-    fun getMysteryMovie(page: Int) : MutableLiveData<List<Movie>>?{
-        val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
+    fun getMysteryMovie(page: Int) : MutableLiveData<MovieResponse>?{
+        val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getMysteryMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
@@ -201,14 +201,14 @@ class MovieRepo{
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-                movies?.value = response?.body()?.results
+                movies?.value = response?.body()
             }
 
         })
         return movies
     }
-    fun getRomanceMovie(page: Int) : MutableLiveData<List<Movie>>?{
-        val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
+    fun getRomanceMovie(page: Int) : MutableLiveData<MovieResponse>?{
+        val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getRomanceMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
@@ -216,14 +216,14 @@ class MovieRepo{
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-                movies?.value = response?.body()?.results
+                movies?.value = response?.body()
             }
 
         })
         return movies
     }
-    fun getScienceMovie(page: Int) : MutableLiveData<List<Movie>>?{
-        val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
+    fun getScienceMovie(page: Int) : MutableLiveData<MovieResponse>?{
+        val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getScienceMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
@@ -231,14 +231,14 @@ class MovieRepo{
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-                movies?.value = response?.body()?.results
+                movies?.value = response?.body()
             }
 
         })
         return movies
     }
-    fun getTVMovie(page: Int) : MutableLiveData<List<Movie>>?{
-        val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
+    fun getTVMovie(page: Int) : MutableLiveData<MovieResponse>?{
+        val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getTVMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
@@ -246,14 +246,14 @@ class MovieRepo{
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-                movies?.value = response?.body()?.results
+                movies?.value = response?.body()
             }
 
         })
         return movies
     }
-    fun getThrillerMovie(page: Int) : MutableLiveData<List<Movie>>?{
-        val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
+    fun getThrillerMovie(page: Int) : MutableLiveData<MovieResponse>?{
+        val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getThrillerMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
@@ -261,15 +261,15 @@ class MovieRepo{
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-                movies?.value = response?.body()?.results
+                movies?.value = response?.body()
             }
 
         })
         return movies
     }
 
-    fun getWarMovie(page: Int) : MutableLiveData<List<Movie>>?{
-        val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
+    fun getWarMovie(page: Int) : MutableLiveData<MovieResponse>?{
+        val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getWarMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
@@ -277,14 +277,14 @@ class MovieRepo{
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-                movies?.value = response?.body()?.results
+                movies?.value = response?.body()
             }
 
         })
         return movies
     }
-    fun getWesternMovie(page: Int) : MutableLiveData<List<Movie>>?{
-        val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
+    fun getWesternMovie(page: Int) : MutableLiveData<MovieResponse>?{
+        val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getWesternMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
                 errorHandle()
@@ -292,7 +292,7 @@ class MovieRepo{
             }
 
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
-                movies?.value = response?.body()?.results
+                movies?.value = response?.body()
             }
 
         })

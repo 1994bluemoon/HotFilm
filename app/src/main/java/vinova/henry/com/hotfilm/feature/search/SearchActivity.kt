@@ -6,19 +6,26 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SearchView
 import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_search.*
 import vinova.henry.com.hotfilm.R
 import vinova.henry.com.hotfilm.feature.home.HomeActivity
+import vinova.henry.com.hotfilm.interf.IMovieEvent
+import vinova.henry.com.hotfilm.models.Movie
 
-
-class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
+class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, IMovieEvent {
 
     private lateinit var searchViewModel: SearchViewModel
     private lateinit var searchAdapter: SearchAdapter
+    private lateinit var linearLayoutManager: LinearLayoutManager
+    private var totalPage: Int? = 0
+    private var curPage: Int? = 1
+    private var isLoading: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,15 +33,42 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         svSearch.setOnQueryTextListener(this)
         searchViewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
-        searchAdapter = SearchAdapter()
+        searchAdapter = SearchAdapter(this)
 
-        rvSearch.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+        linearLayoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+        rvSearch.layoutManager = linearLayoutManager
         rvSearch.adapter = searchAdapter
 
-        searchViewModel.movies.observe(this, Observer {
+        searchViewModel.moviesQueryChange.observe(this, Observer {
+            searchAdapter.clearData()
             searchAdapter.setAdapterMovies(it?.results)
             searchAdapter.notifyDataSetChanged()
+            totalPage = it?.total_pages
             tvResultCount.text = "Total ${it?.total_results} results"
+            loaded()
+        })
+
+        searchViewModel.moviesPageChange.observe(this, Observer {
+            searchAdapter.setAdapterMovies(it?.results)
+            searchAdapter.notifyDataSetChanged()
+            loaded()
+        })
+
+        rvSearch.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val totalItemCount = linearLayoutManager.getItemCount();
+                val lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
+
+                if (lastVisibleItem == totalItemCount - 10 && !isLoading){
+                    if (curPage ?: 0 < totalPage ?: 0){
+                        curPage = curPage?.plus(1)
+                        searchViewModel.setPage(curPage)
+                        Log.d("curPage", curPage.toString())
+                        Toast.makeText(this@SearchActivity, "loading", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         })
 
         imBack.setOnClickListener(object : View.OnClickListener{
@@ -43,17 +77,35 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
                 this@SearchActivity.finish()
             }
         })
-
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         searchViewModel.setQuery(query)
-        tvResultCount.text = "Total 0 result"
+        tvResultCount.text = "Total result: 0"
+        curPage = 1
+        loading()
         return false
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        Log.d("query", newText)
         return false
+    }
+
+    override fun onItemRvClicked(movie: Movie?) {
+        Log.d("click", movie?.title)
+    }
+
+    override fun onLoadMoreListener() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    fun loaded(){
+        isLoading = false
+        pbLoading.visibility = View.INVISIBLE
+    }
+
+    fun loading(){
+        isLoading = true
+        pbLoading.visibility = View.VISIBLE
     }
 }
