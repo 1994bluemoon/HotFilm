@@ -13,6 +13,7 @@ import android.view.View
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_search.*
 import vinova.henry.com.hotfilm.R
+import vinova.henry.com.hotfilm.feature.detail.DetailActivity
 import vinova.henry.com.hotfilm.feature.home.HomeActivity
 import vinova.henry.com.hotfilm.interf.IMovieEvent
 import vinova.henry.com.hotfilm.models.Movie
@@ -76,6 +77,12 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, IMov
         })
     }
 
+    override fun onBackPressed() {
+        startActivity(Intent(this@SearchActivity, HomeActivity::class.java))
+        this@SearchActivity.finish()
+        super.onBackPressed()
+    }
+
     override fun onQueryTextSubmit(query: String?): Boolean {
         searchViewModel.setQuery(query)
         tvResultCount.text = "Total result: 0"
@@ -90,6 +97,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, IMov
 
     override fun onItemRvClicked(movie: Movie?) {
         Log.d("click", movie?.title)
+        startActivity(Intent(this@SearchActivity, DetailActivity::class.java).putExtra("movieId", movie?.id))
     }
 
     override fun onLoadMoreListener(currentPage: Int) {

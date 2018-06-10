@@ -42,14 +42,14 @@ class ViewPagerAdapter(private val count: Int,
 
 
     private fun initRecyclerView(recyclerView: RecyclerView, position: Int, linearLayoutManager: LinearLayoutManager) {
-        var isLoading: Boolean = false
+        var isLoading = false
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val layoutManager = recyclerView?.layoutManager as LinearLayoutManager
                 val totalItemCount = layoutManager.itemCount
                 val lastVisibleItem = layoutManager.findLastVisibleItemPosition()
-                if (lastVisibleItem == totalItemCount - 10 && !isLoading){
+                if (lastVisibleItem == totalItemCount - 15 && !isLoading){
                     iMovieEvent?.onLoadMoreListener(totalItemCount/20)
                     isLoading = true
                 }

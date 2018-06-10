@@ -2,12 +2,20 @@ package vinova.henry.com.hotfilm.server
 
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.PATCH
+import retrofit2.http.Path
 import retrofit2.http.Query
-import vinova.henry.com.hotfilm.models.Genre
+import vinova.henry.com.hotfilm.models.detail.Genre
 import vinova.henry.com.hotfilm.models.MovieResponse
 import vinova.henry.com.hotfilm.models.TrailerResult
+import vinova.henry.com.hotfilm.models.detail.MovieDetail
 
 interface ITheMovieDBService{
+
+    @GET("/3/movie/{movieId}")
+    fun getMovieDetail(@Path("movieId") movieId: Int,
+                       @Query("api_key") api_key: String,
+                       @Query("language") language: String): Call<MovieDetail>
 
     @GET("/3/discover/movie")
     fun getDiscoverMovie(@Query("api_key") api_key: String,

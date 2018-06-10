@@ -1,95 +1,53 @@
-/*
 package vinova.henry.com.hotfilm.feature.detail
 
-import android.content.Intent
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import com.squareup.picasso.Picasso
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.android.synthetic.main.activity_detail.*
 import vinova.henry.com.hotfilm.R
-import vinova.henry.com.hotfilm.feature.trailer.YouTubeActivity
-import vinova.henry.com.hotfilm.models.Trailer
-import vinova.henry.com.hotfilm.models.TrailerResult
-import java.util.*
+import vinova.henry.com.hotfilm.models.detail.MovieDetail
 
-class DetailActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+class DetailActivity : AppCompatActivity() {
 
-    internal var movie: MovieBase? = null
-    internal var isClicked = false
-    internal lateinit var trailers: MutableList<Trailer>
-    internal lateinit var detailPresenterImp: DetailPresenterImp
-    internal var isFirst = true
-    internal lateinit var detailAdapter: DetailAdapter
+    internal var movieId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-        trailers = ArrayList()
+
+        val detailViewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
+
+        detailViewModel.movieDetail.observe(this, Observer {
+            setData(it)
+        })
 
         val ex = intent.extras
         if (ex != null) {
-            movie = ex.get("MovieBase") as MovieBase
+            movieId = ex.get("movieId") as Int
+            detailViewModel.setMovieId(movieId)
         }
 
-        val posterUri = "https://image.tmdb.org/t/p/w500/" + movie!!.posterPath
+
+
+        /*val posterUri = "https://image.tmdb.org/t/p/w500/" + movie!!.posterPath
         Picasso.with(this).load(posterUri).into(imPoster)
 
         val backdropUri = "https://image.tmdb.org/t/p/w500/" + movie!!.backdropPath
-        Picasso.with(this).load(backdropUri).into(imBackdrop)
+        Picasso.with(this).load(backdropUri).into(imBackdrop)*/
 
-        tvTitle!!.text = movie!!.title
-        tvDetail!!.text = movie!!.overview
-
-        //spinnerTrailer.setOnItemSelectedListener(this);
- detailAdapter = DetailAdapter(this@DetailActivity, this)
         val linearLayoutManager = LinearLayoutManager(this@DetailActivity, LinearLayoutManager.HORIZONTAL, false)
-        rvThumbnail!!.layoutManager = linearLayoutManager
-        rvThumbnail!!.setHasFixedSize(true)
-        rvThumbnail!!.adapter = detailAdapter
 
     }
 
-    override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-        if (isFirst) {
-            isFirst = false
-        } else {
-            Log.d("selected", trailers[position].name)
-            val intent = Intent(this, YouTubeActivity::class.java)
-            intent.putExtra("Trailer", trailers[position])
-            startActivity(intent)
-        }
-    }
-
-    override fun onNothingSelected(parent: AdapterView<*>) {
-        if (trailers.size == 1) {
-            val intent = Intent(this, YouTubeActivity::class.java)
-            intent.putExtra("Trailer", trailers[0])
-            startActivity(intent)
-        }
-    }
-
-    fun onViewClicked() {
-        if (isClicked) {
-            isClicked = false
-            rvThumbnail!!.visibility = View.GONE
-        } else if (!isClicked) {
-            isClicked = true
-            rvThumbnail!!.visibility = View.VISIBLE
-        }
-    }
-
-    fun onClickItem(position: Int) {
-        Log.d("selected", trailers[position].name)
-        val intent = Intent(this, YouTubeActivity::class.java)
-        intent.putExtra("Trailer", trailers[position])
-        startActivity(intent)
+    fun setData(movieDetail: MovieDetail?){
+        val posterUri = "https://image.tmdb.org/t/p/w500/${movieDetail?.poster_path}"
+        Picasso.with(this).load(posterUri).into(imPoster)
+        val backdropUri = "https://image.tmdb.org/t/p/w500/${movieDetail?.backdrop_path}"
+        Picasso.with(this).load(backdropUri).into(imBackdrop)
+        tvTitle.text = movieDetail?.title
+        tvDetail.text = movieDetail?.overview
     }
 }
-*/

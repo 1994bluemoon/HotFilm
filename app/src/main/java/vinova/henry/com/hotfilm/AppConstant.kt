@@ -1,6 +1,6 @@
 package vinova.henry.com.hotfilm
 
-import vinova.henry.com.hotfilm.models.Genre
+import vinova.henry.com.hotfilm.models.detail.Genre
 
 const val BASE_URL: String = "https://api.themoviedb.org"
 const val API_KEY: String = "54715436e1813692f121feb9fd97709e"

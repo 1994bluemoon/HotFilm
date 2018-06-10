@@ -15,6 +15,7 @@ import android.view.MenuItem
 import android.widget.FrameLayout
 import android.widget.Toast
 import vinova.henry.com.hotfilm.R
+import vinova.henry.com.hotfilm.feature.detail.DetailActivity
 import vinova.henry.com.hotfilm.feature.search.SearchActivity
 import vinova.henry.com.hotfilm.header.HeaderAdapter
 import vinova.henry.com.hotfilm.header.HeaderItemTransformer
@@ -70,7 +71,7 @@ class HomeActivity : AppCompatActivity(), IMovieEvent {
     }
 
     override fun onItemRvClicked(movie: Movie?) {
-        Toast.makeText(this, movie?.title, Toast.LENGTH_SHORT ).show()
+        startActivity(Intent(this@HomeActivity, DetailActivity::class.java).putExtra("movieId", movie?.id))
     }
 
     override fun onLoadMoreListener(currentPage: Int) {

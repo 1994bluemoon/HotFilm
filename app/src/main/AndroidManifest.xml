@@ -13,19 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".feature.discovermovie.DiscoverMovieActivity" />
-        <!--
-            <activity android:name=".feature.detail.DetailActivity"
-            android:screenOrientation="sensorPortrait"/>
-        -->
-
-
-        <!--
-            <provider
-            android:name=".datahelper.DbContentProvider"
-            android:authorities="vinova.henry.com.hotfilm.provider"
-            android:exported="true" />
-        -->
-
 
         <!--
             <activity
@@ -38,11 +25,11 @@
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".feature.search.SearchActivity"></activity>
+        <activity android:name=".feature.search.SearchActivity" />
+        <activity android:name=".feature.detail.DetailActivity" />
     </application>
 
 </manifest>
