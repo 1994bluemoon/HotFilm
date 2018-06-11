@@ -2,13 +2,12 @@ package vinova.henry.com.hotfilm.server
 
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.PATCH
 import retrofit2.http.Path
 import retrofit2.http.Query
 import vinova.henry.com.hotfilm.models.detail.Genre
 import vinova.henry.com.hotfilm.models.MovieResponse
-import vinova.henry.com.hotfilm.models.TrailerResult
 import vinova.henry.com.hotfilm.models.detail.MovieDetail
+import vinova.henry.com.hotfilm.models.trailer.TrailerResponse
 
 interface ITheMovieDBService{
 
@@ -23,8 +22,10 @@ interface ITheMovieDBService{
                          @Query("sort_by") sort_by: String,
                          @Query("page") page: Int): Call<MovieResponse>
 
-    @GET("/3/videos")
-    fun getMovieTrailer(@Query("api_key") api_key: String): Call<TrailerResult>
+    @GET("/3/movie/{movie_id}/videos")
+    fun getMovieTrailer(@Path("movie_id") movieId: Int,
+                        @Query("api_key") api_key: String,
+                        @Query("language") language: String): Call<TrailerResponse>
 
     @GET("/3/search/movie")
     fun getSearchResult(@Query("api_key") api_key: String,

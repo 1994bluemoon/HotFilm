@@ -13,6 +13,10 @@ class DetailViewModel : ViewModel(){
         detailRepo.getMovieDetail(it)
     })
 
+    var trailer = Transformations.switchMap(movieId, {
+        detailRepo.getMovieTrailers(it)
+    })
+
     fun setMovieId(movieId: Int?){
         this.movieId.value = movieId
     }

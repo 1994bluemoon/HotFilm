@@ -6,6 +6,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import vinova.henry.com.hotfilm.API_KEY
 import vinova.henry.com.hotfilm.models.detail.MovieDetail
+import vinova.henry.com.hotfilm.models.trailer.TrailerResponse
 import vinova.henry.com.hotfilm.server.ServiceGenerator
 
 class DetailRepo{
@@ -21,5 +22,20 @@ class DetailRepo{
             }
         })
         return movieDetail
+    }
+
+    fun getMovieTrailers(movieId: Int): MutableLiveData<TrailerResponse>?{
+        val trailerResponse: MutableLiveData<TrailerResponse>? = MutableLiveData()
+        ServiceGenerator.theMovieDBService.getMovieTrailer(movieId, API_KEY, "en_US").enqueue(object : Callback<TrailerResponse> {
+            override fun onFailure(call: Call<TrailerResponse>?, t: Throwable?) {
+
+            }
+
+            override fun onResponse(call: Call<TrailerResponse>?, response: Response<TrailerResponse>?) {
+                trailerResponse?.value = response?.body()
+            }
+        })
+
+        return trailerResponse
     }
 }
