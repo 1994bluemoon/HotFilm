@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".feature.search.SearchActivity">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
+        android:paddingTop="23dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#9C27B0"
+        android:background="@color/colorMainTitleBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -29,16 +31,19 @@
 
         <android.support.v7.widget.SearchView
             android:id="@+id/svSearch"
+            style="@style/AppTheme"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:closeIcon="@drawable/ic_clear_black"
+            app:closeIcon="@drawable/ic_clear_white"
+            app:goIcon="@drawable/ic_forward_white"
+            app:showDividers="middle"
             app:iconifiedByDefault="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/imBack"
             app:layout_constraintTop_toTopOf="parent"
             app:queryHint="@string/search"
-            app:searchIcon="@drawable/ic_search_black" />
+            app:searchIcon="@drawable/ic_search_white" />
 
     </android.support.constraint.ConstraintLayout>
 

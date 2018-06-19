@@ -3,7 +3,6 @@ package vinova.henry.com.hotfilm.pager
 import android.annotation.SuppressLint
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import vinova.henry.com.hotfilm.R
 import vinova.henry.com.hotfilm.interf.IMovieEvent
@@ -11,10 +10,10 @@ import vinova.henry.com.hotfilm.models.Movie
 
 class PageAdapter(private val iMovieEvent: IMovieEvent?) : RecyclerView.Adapter<PageItem>() {
 
-    private var movies: ArrayList<Movie>? = ArrayList<Movie>()
+    private var movies: ArrayList<Movie>? = ArrayList()
 
     fun setMovies(movies: List<Movie>?){
-        this.movies?.addAll(movies ?: ArrayList<Movie>())
+        this.movies?.addAll(movies ?: ArrayList())
         notifyDataSetChanged()
     }
 
@@ -32,11 +31,7 @@ class PageAdapter(private val iMovieEvent: IMovieEvent?) : RecyclerView.Adapter<
         when (holder) {
             is ItemMovie -> { holder.setContent(movies?.get(position)) }
         }
-        holder.itemView.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(v: View?) {
-                iMovieEvent?.onItemRvClicked(movies?.get(position))
-            }
-        })
+        holder.itemView.setOnClickListener { iMovieEvent?.onItemRvClicked(movies?.get(position)) }
     }
 
     override fun onViewRecycled(holder: PageItem) {
@@ -48,6 +43,9 @@ class PageAdapter(private val iMovieEvent: IMovieEvent?) : RecyclerView.Adapter<
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie_cardview, parent, false)
         return ItemMovie(view)
     }
+
+
+
 
 
     /*override fun getItemViewType(position: Int): Int {

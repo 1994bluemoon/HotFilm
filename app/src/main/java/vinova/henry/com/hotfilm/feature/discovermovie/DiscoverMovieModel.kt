@@ -10,7 +10,7 @@ class DiscoverMovieModel : ViewModel(){
     val discoverMovieRepo = MovieRepo()
     var page: MutableLiveData<Int> = MutableLiveData()
     var movies = Transformations.switchMap(page, {
-        discoverMovieRepo.getDescoverMovie(it)
+        discoverMovieRepo.getDiscoverMovie(it)
     })
 
     init {

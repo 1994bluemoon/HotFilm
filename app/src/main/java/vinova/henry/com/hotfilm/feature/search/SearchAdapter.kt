@@ -13,15 +13,15 @@ import vinova.henry.com.hotfilm.models.Movie
 
 class SearchAdapter(private val iMovieEvent: IMovieEvent?) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
-    var movies: ArrayList<Movie>? = null
+    private var movies: ArrayList<Movie>? = null
 
     fun setAdapterMovies(movies: List<Movie>?){
-        this.movies?.addAll(movies ?: ArrayList<Movie>())
+        this.movies?.addAll(movies ?: ArrayList())
         notifyDataSetChanged()
     }
 
     fun clearData(){
-        this.movies = ArrayList<Movie>()
+        this.movies = ArrayList()
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_movie_cardview, parent, false)
@@ -38,12 +38,7 @@ class SearchAdapter(private val iMovieEvent: IMovieEvent?) : RecyclerView.Adapte
 
         Glide.with(holder.itemView.imBackdrop).load("https://image.tmdb.org/t/p/w500" + movies?.get(position)?.backdrop_path).into(holder.itemView.imBackdrop)
 
-        holder.itemView.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(v: View?) {
-                iMovieEvent?.onItemRvClicked(movies?.get(position))
-            }
-
-        })
+        holder.itemView.setOnClickListener { iMovieEvent?.onItemRvClicked(movies?.get(position)) }
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view)

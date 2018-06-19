@@ -4,6 +4,7 @@ import vinova.henry.com.hotfilm.models.detail.Genre
 
 const val BASE_URL: String = "https://api.themoviedb.org"
 const val API_KEY: String = "54715436e1813692f121feb9fd97709e"
+const val YOUTUBE_API_KEY = "AIzaSyBPjiGer_AHJYZat5aXgW4VBz7dHdCGxXQ"
 
 val GENRE_ACTION: Genre = Genre("28", "Action")
 val GENRE_ADVENTURE: Genre = Genre("12", "Adventure")

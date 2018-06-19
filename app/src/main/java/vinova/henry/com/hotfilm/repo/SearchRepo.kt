@@ -1,13 +1,11 @@
 package vinova.henry.com.hotfilm.repo
 
 import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
 import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import vinova.henry.com.hotfilm.API_KEY
-import vinova.henry.com.hotfilm.models.Movie
 import vinova.henry.com.hotfilm.models.MovieResponse
 import vinova.henry.com.hotfilm.server.ServiceGenerator
 
@@ -23,7 +21,6 @@ class SearchRepo {
             override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
                 movies.value = response?.body()
             }
-
         })
 
         return movies

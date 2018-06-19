@@ -7,17 +7,17 @@ import vinova.henry.com.hotfilm.repo.SearchRepo
 
 class SearchViewModel : ViewModel(){
 
-    val searchRepo = SearchRepo()
-    var page: MutableLiveData<Int> = MutableLiveData()
-    var query: MutableLiveData<String> = MutableLiveData()
+    private val searchRepo = SearchRepo()
+    private var page: MutableLiveData<Int> = MutableLiveData()
+    private var query: MutableLiveData<String> = MutableLiveData()
 
-    var moviesQueryChange = Transformations.switchMap(query, {
+    var moviesQueryChange = Transformations.switchMap(query) {
         searchRepo.getSearchResult(it, 1)
-    })
+    }
 
-    var moviesPageChange = Transformations.switchMap(page, {
+    var moviesPageChange = Transformations.switchMap(page) {
         searchRepo.getSearchResult(this@SearchViewModel.query.value ?: "", it)
-    })
+    }
 
     fun setQuery(query: String?){
         this.query.value = query

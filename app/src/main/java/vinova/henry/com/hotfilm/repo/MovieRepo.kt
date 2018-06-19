@@ -1,19 +1,18 @@
 package vinova.henry.com.hotfilm.repo
 
 import android.arch.lifecycle.MutableLiveData
-import android.hardware.camera2.CameraCaptureSession
 import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import vinova.henry.com.hotfilm.API_KEY
-import vinova.henry.com.hotfilm.models.MovieResponse
 import vinova.henry.com.hotfilm.models.Movie
+import vinova.henry.com.hotfilm.models.MovieResponse
 import vinova.henry.com.hotfilm.server.ServiceGenerator
 
 class MovieRepo{
 
-    fun getDescoverMovie(page: Int): MutableLiveData<List<Movie>>?{
+    fun getDiscoverMovie(page: Int): MutableLiveData<List<Movie>>?{
         val movies: MutableLiveData<List<Movie>>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getDiscoverMovie(API_KEY, "en-US", "popularity.desc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
@@ -27,7 +26,21 @@ class MovieRepo{
         return movies
     }
 
-    fun getActionMovie(page: Int) : MutableLiveData<MovieResponse>?{
+    fun getMovieByGenre(page: Int?, genreId: String?) : MutableLiveData<MovieResponse>?{
+        val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
+        ServiceGenerator.theMovieDBService.getMovieByGenre(genreId, API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
+            override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
+            }
+
+            override fun onResponse(call: Call<MovieResponse>?, response: Response<MovieResponse>?) {
+                movies?.value = response?.body()
+                Log.d("relate movie", response?.body()?.results.toString())
+            }
+        })
+        return movies
+    }
+
+    /*fun getActionMovie(page: Int) : MutableLiveData<MovieResponse>?{
         val movies: MutableLiveData<MovieResponse>? = MutableLiveData()
         ServiceGenerator.theMovieDBService.getActionMovie(API_KEY, "en-US", "created_at.asc", page).enqueue(object : Callback<MovieResponse>{
             override fun onFailure(call: Call<MovieResponse>?, t: Throwable?) {
@@ -263,7 +276,7 @@ class MovieRepo{
             }
         })
         return movies
-    }
+    }*/
 
     fun errorHandle(){
         Log.d("get server data", "fail")

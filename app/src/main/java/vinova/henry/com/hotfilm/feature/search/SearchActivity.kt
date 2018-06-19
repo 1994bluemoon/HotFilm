@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SearchView
 import android.util.Log
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_search.*
 import vinova.henry.com.hotfilm.R
@@ -29,8 +31,11 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, IMov
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         setContentView(R.layout.activity_search)
 
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         svSearch.setOnQueryTextListener(this)
         searchViewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
         searchAdapter = SearchAdapter(this)
@@ -114,3 +119,6 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, IMov
         pbLoading.visibility = View.VISIBLE
     }
 }
+
+
+/*requestWindowFeature(Window.FEATURE_NO_TITLE)*/

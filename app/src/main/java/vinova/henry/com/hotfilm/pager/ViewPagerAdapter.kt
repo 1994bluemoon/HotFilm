@@ -60,126 +60,145 @@ class ViewPagerAdapter(private val count: Int,
             0 -> {
                 val adapter = PageAdapter(iMovieEvent)
                 recyclerView.adapter = adapter
-                homeViewModel.actionMovies.observe(homeLifecycle, Observer {
+                homeViewModel.actionMovies?.observe(homeLifecycle, Observer {
                     adapter.setMovies(it?.results)
+                    Log.d("page: ", it?.page.toString())
                     isLoading = false
                 }) }
             1 -> {
                 val adapter = PageAdapter(iMovieEvent)
                 recyclerView.adapter = adapter
-                homeViewModel.adventureMovies.observe(homeLifecycle, Observer {
+                homeViewModel.adventureMovies?.observe(homeLifecycle, Observer {
                     adapter.setMovies(it?.results)
+                    Log.d("page: ", it?.page.toString())
                     isLoading = false  }) }
             2 -> {
                 val adapter = PageAdapter(iMovieEvent)
                 recyclerView.adapter = adapter
-                homeViewModel.animationMovies.observe(homeLifecycle, Observer {
+                homeViewModel.animationMovies?.observe(homeLifecycle, Observer {
                     adapter.setMovies(it?.results)
+                    Log.d("page: ", it?.page.toString())
+
                     isLoading = false
                 }) }
             3 -> {
                 val adapter = PageAdapter(iMovieEvent)
                 recyclerView.adapter = adapter
-                homeViewModel.crimeMovies.observe(homeLifecycle, Observer {
+                homeViewModel.crimeMovies?.observe(homeLifecycle, Observer {
                     adapter.setMovies(it?.results)
+                    Log.d("page: ", it?.page.toString())
                     isLoading = false
                 }) }
             4 -> {
                 val adapter = PageAdapter(iMovieEvent)
                 recyclerView.adapter = adapter
-                homeViewModel.documentaryMovies.observe(homeLifecycle, Observer {
+                homeViewModel.documentaryMovies?.observe(homeLifecycle, Observer {
                     adapter.setMovies(it?.results)
+                    Log.d("page: ", it?.page.toString())
                     isLoading = false
                 }) }
             5 -> {
                 val adapter = PageAdapter(iMovieEvent)
                 recyclerView.adapter = adapter
-                homeViewModel.dramaMovies.observe(homeLifecycle, Observer {
+                homeViewModel.dramaMovies?.observe(homeLifecycle, Observer {
                     adapter.setMovies(it?.results)
+                    Log.d("page: ", it?.page.toString())
                     isLoading = false
                 }) }
             6 -> {
                 val adapter = PageAdapter(iMovieEvent)
                 recyclerView.adapter = adapter
-                homeViewModel.familyMovies.observe(homeLifecycle, Observer {
+                homeViewModel.familyMovies?.observe(homeLifecycle, Observer {
                     adapter.setMovies(it?.results)
+                    Log.d("page: ", it?.page.toString())
                     isLoading = false
                 }) }
             7 -> {
                 val adapter = PageAdapter(iMovieEvent)
                 recyclerView.adapter = adapter
-                homeViewModel.fantasyMovies.observe(homeLifecycle, Observer {
+                homeViewModel.fantasyMovies?.observe(homeLifecycle, Observer {
                     adapter.setMovies(it?.results)
+                    Log.d("page: ", it?.page.toString())
                     isLoading = false
                 }) }
             8 -> {
                 val adapter = PageAdapter(iMovieEvent)
                 recyclerView.adapter = adapter
-                homeViewModel.historyMovies.observe(homeLifecycle, Observer {
+                homeViewModel.historyMovies?.observe(homeLifecycle, Observer {
                     adapter.setMovies(it?.results)
+                    Log.d("page: ", it?.page.toString())
                     isLoading = false
                 }) }
             9 -> {
                 val adapter = PageAdapter(iMovieEvent)
                 recyclerView.adapter = adapter
-                homeViewModel.horrorMovies.observe(homeLifecycle, Observer {
+                homeViewModel.horrorMovies?.observe(homeLifecycle, Observer {
                     adapter.setMovies(it?.results)
+                    Log.d("page: ", it?.page.toString())
                     isLoading = false
                 }) }
             10 -> {
                 val adapter = PageAdapter(iMovieEvent)
                 recyclerView.adapter = adapter
-                homeViewModel.musicMovies.observe(homeLifecycle, Observer {
+                homeViewModel.musicMovies?.observe(homeLifecycle, Observer {
                     adapter.setMovies(it?.results)
+                    Log.d("page: ", it?.page.toString())
                     isLoading = false
                 }) }
             11 -> {
                 val adapter = PageAdapter(iMovieEvent)
                 recyclerView.adapter = adapter
-                homeViewModel.mysteryMovies.observe(homeLifecycle, Observer {
+                homeViewModel.mysteryMovies?.observe(homeLifecycle, Observer {
                     adapter.setMovies(it?.results)
+                    Log.d("page: ", it?.page.toString())
                     isLoading = false
                 }) }
             12 -> {
                 val adapter = PageAdapter(iMovieEvent)
                 recyclerView.adapter = adapter
-                homeViewModel.romanceMovies.observe(homeLifecycle, Observer {
+                homeViewModel.romanceMovies?.observe(homeLifecycle, Observer {
                     adapter.setMovies(it?.results)
+                    Log.d("page: ", it?.page.toString())
                     isLoading = false
                 }) }
             13 -> {
                 val adapter = PageAdapter(iMovieEvent)
                 recyclerView.adapter = adapter
-                homeViewModel.scienceFictionMovies.observe(homeLifecycle, Observer {
+                homeViewModel.scienceFictionMovies?.observe(homeLifecycle, Observer {
                     adapter.setMovies(it?.results)
+                    Log.d("page: ", it?.page.toString())
                     isLoading = false
                 }) }
             14 -> {
                 val adapter = PageAdapter(iMovieEvent)
                 recyclerView.adapter = adapter
-                homeViewModel.thrillerMovies.observe(homeLifecycle, Observer {
+                homeViewModel.thrillerMovies?.observe(homeLifecycle, Observer {
                     adapter.setMovies(it?.results)
+                    Log.d("page: ", it?.page.toString())
                     isLoading = false
                 }) }
             15 -> {
                 val adapter = PageAdapter(iMovieEvent)
                 recyclerView.adapter = adapter
-                homeViewModel.tvMovies.observe(homeLifecycle, Observer {
+                homeViewModel.tvMovies?.observe(homeLifecycle, Observer {
                     adapter.setMovies(it?.results)
+                    Log.d("page: ", it?.page.toString())
                     isLoading = false
                 }) }
             16 -> {
                 val adapter = PageAdapter(iMovieEvent)
                 recyclerView.adapter = adapter
-                homeViewModel.warMovies.observe(homeLifecycle, Observer {
+                homeViewModel.warMovies?.observe(homeLifecycle, Observer {
                     adapter.setMovies(it?.results)
+                    Log.d("page: ", it?.page.toString())
                     isLoading = false
                 }) }
             17 -> {
                 val adapter = PageAdapter(iMovieEvent)
                 recyclerView.adapter = adapter
-                homeViewModel.westernMovies.observe(homeLifecycle, Observer {
+                homeViewModel.westernMovies?.observe(homeLifecycle, Observer {
                     adapter.setMovies(it?.results)
+                    Log.d("page: ", it?.page.toString())
                     isLoading = false
                 }) }
         }

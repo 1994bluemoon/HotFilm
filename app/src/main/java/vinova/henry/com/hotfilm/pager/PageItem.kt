@@ -7,7 +7,6 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import vinova.henry.com.hotfilm.R
 import vinova.henry.com.hotfilm.models.Movie
-import vinova.henry.com.hotfilm.models.PageDataSet
 
 sealed class PageItem (view: View) : RecyclerView.ViewHolder(view) {
     fun clearContent() {}
@@ -21,9 +20,13 @@ class ItemMovie(view: View) : PageItem(view){
     fun setContent(movie: Movie?){
         tvTitle.text = movie?.title
         tvOverview.text = movie?.overview
-        Glide.with(imBackdrop).load("https://image.tmdb.org/t/p/w500" + movie?.backdrop_path).into(imBackdrop)
+        Glide.with(imBackdrop).load("https://image.tmdb.org/t/p/w500${movie?.backdrop_path}").into(imBackdrop)
     }
 }
+
+
+
+
 
 /*class ItemUser(view: View) : PageItem(view) {
     private val avatar = view.findViewById<ImageView>(R.id.avatar)

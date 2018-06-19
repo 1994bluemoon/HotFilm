@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -15,9 +16,11 @@
             android:id="@+id/collapsingToolbarLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:contentScrim="@color/colorPrimary"
+            app:contentScrim="@color/colorMainTitleBackground"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
             <ImageView
+                android:src="@mipmap/ic_launcher"
                 android:id="@+id/imBackdrop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -27,8 +30,10 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"/>
+                android:layout_height="64dp"
+                android:paddingTop="14dp"
+                app:titleMarginBottom="0dp"
+                app:layout_collapseMode="pin" />
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
@@ -55,21 +60,82 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tvRating"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:text="Rating"
+                app:layout_constraintBottom_toTopOf="@+id/rbRating"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imPoster" />
+
+            <RatingBar
+                android:id="@+id/rbRating"
+                style="@style/ratingBar"
+                android:progressTint="@color/colorMainTitleBackground"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="16dp"
+                android:isIndicator="true"
+                android:numStars="10"
+                android:rating="5.0"
+                android:stepSize="0.1"
+                app:layout_constraintBottom_toBottomOf="@+id/imPoster"
+                app:layout_constraintStart_toEndOf="@+id/imPoster"
+                app:layout_constraintTop_toTopOf="@+id/imPoster" />
+
+            <TextView
+                android:id="@+id/tvRatingDetail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="rating detail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imPoster"
+                app:layout_constraintTop_toBottomOf="@+id/rbRating" />
+
+            <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="32dp"
                 android:text="title"
-                android:textStyle="bold"
                 android:textSize="12pt"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rvThumbnail" />
 
+            <TextView
+                android:id="@+id/tvTrailer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/trailers"
+                android:textSize="12pt"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imPoster" />
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvThumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTrailer" />
+
+            <TextView
+                android:id="@+id/tvDetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -77,22 +143,32 @@
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imPoster" />
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
             <TextView
-                android:id="@+id/tvDetail"
-                android:layout_width="match_parent"
+                android:textSize="12pt"
+                android:textStyle="bold"
+                android:id="@+id/tvSimilarMovie"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="description"
-                android:textSize="12pt"
+                android:layout_marginTop="32dp"
+                android:text="@string/similar_movies"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDetail" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvRelateMovie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:tooltipText="Similar Movies"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+                app:layout_constraintTop_toBottomOf="@id/tvSimilarMovie" />
 
         </android.support.constraint.ConstraintLayout>
     </android.support.v4.widget.NestedScrollView>
@@ -103,7 +179,6 @@
                     android:id="@+id/imBackdrop"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:contentDescription="TODO"
                     android:scaleType="centerCrop"
                     android:src="@mipmap/ic_launcher_round"
                     app:layout_constraintEnd_toEndOf="parent"

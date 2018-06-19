@@ -4,32 +4,39 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!-- android:screenOrientation="sensorPortrait" -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Movie Kotlin"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".feature.discovermovie.DiscoverMovieActivity" />
+        android:theme="@style/AppTheme" >
 
-        <!--
-            <activity
-            android:name=".feature.trailer.YouTubeActivity"
-            android:screenOrientation="sensorLandscape" />
-        -->
-        <activity
-            android:name=".feature.home.HomeActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme">
+        <activity android:name=".feature.discovermovie.DiscoverMovieActivity" />
+        <activity android:name=".feature.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".feature.search.SearchActivity" />
-        <activity android:name=".feature.detail.DetailActivity" />
+        <activity android:name=".feature.detail.DetailActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity android:name=".feature.trailer.YouTubeActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize" />
     </application>
 
 </manifest>
+
+   <!-- android:label="@string/app_name"
+   -->
+
+    <!--android:theme="@style/AppTheme"-->
+    <!-- android:screenOrientation="sensorPortrait" -->
+
+
+    <!--
+        <activity
+        android:name=".feature.trailer.YouTubeActivity"
+        android:screenOrientation="sensorLandscape" />
+    -->

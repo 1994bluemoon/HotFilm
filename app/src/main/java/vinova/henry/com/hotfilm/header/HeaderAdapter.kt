@@ -1,16 +1,12 @@
 package vinova.henry.com.hotfilm.header
 
-import android.arch.lifecycle.LifecycleOwner
-import android.arch.lifecycle.Observer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
 import vinova.henry.com.hotfilm.R
-import vinova.henry.com.hotfilm.feature.home.HeaderViewModel
 import vinova.henry.com.hotfilm.models.Header
-import vinova.henry.com.hotfilm.models.HeaderDataSet
 import vinova.henry.com.hotfilm.navigationtoolbar.HeaderLayout
 
 class HeaderAdapter(
@@ -49,7 +45,7 @@ class HeaderAdapter(
     private fun getNextOverlayLine(): View? {
         for (i in 0 until linesLayout.childCount) {
             val child = linesLayout.getChildAt(i)
-            if (child.getTag() == null) {
+            if (child.tag == null) {
                 return child
             }
         }
