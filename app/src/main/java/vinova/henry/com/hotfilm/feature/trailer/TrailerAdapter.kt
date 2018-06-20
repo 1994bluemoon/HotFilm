@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.item_trailer_youtube_view.view.*
 import vinova.henry.com.hotfilm.R
 import vinova.henry.com.hotfilm.models.trailer.Trailer
 
-class TrailerAdapter(val itemClicked : (String?) -> Unit) : RecyclerView.Adapter<TrailerAdapter.ViewHolder>() {
+class TrailerAdapter(val itemClicked : (String?, String?) -> Unit) : RecyclerView.Adapter<TrailerAdapter.ViewHolder>() {
 
     private var trailers: ArrayList<Trailer>? = ArrayList()
 
@@ -33,7 +33,8 @@ class TrailerAdapter(val itemClicked : (String?) -> Unit) : RecyclerView.Adapter
         Glide.with(holder.itemView.im_thumbnail).load(thumbnailUrl).into(holder.itemView.im_thumbnail)
 
         holder.itemView.setOnClickListener {
-            itemClicked(trailers?.get(holder.adapterPosition)?.key)
+            itemClicked(trailers?.get(holder.adapterPosition)?.key,
+                    trailers?.get(holder.adapterPosition)?.name)
         }
     }
 

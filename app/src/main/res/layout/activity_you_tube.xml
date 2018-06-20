@@ -5,13 +5,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clToolBar"
+        android:paddingTop="23dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorMainTitleBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_back_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:textColor="@color/color_white"
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/app_name"
+            app:layout_constraintBottom_toBottomOf="@+id/imBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imBack"
+            app:layout_constraintTop_toTopOf="@+id/imBack" />
+
+    </android.support.constraint.ConstraintLayout>
+
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/youTubePlayerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/clToolBar" />
 
     <TextView
         android:id="@+id/tvOtherTrailer"

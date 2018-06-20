@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorMainTitleBackground">#9C27B0</color>
     <color name="colorUnrate">#f2fffd</color>
+    <color name="color_white">#FFFFFF</color>
 </resources>

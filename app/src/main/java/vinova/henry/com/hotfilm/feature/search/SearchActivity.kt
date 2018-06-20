@@ -74,12 +74,10 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener, IMov
             }
         })
 
-        imBack.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(v: View?) {
-                startActivity(Intent(this@SearchActivity, HomeActivity::class.java))
-                this@SearchActivity.finish()
-            }
-        })
+        imBack.setOnClickListener {
+            startActivity(Intent(this@SearchActivity, HomeActivity::class.java))
+            this@SearchActivity.finish()
+        }
     }
 
     override fun onBackPressed() {
